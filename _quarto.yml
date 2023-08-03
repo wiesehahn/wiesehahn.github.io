@@ -1,0 +1,72 @@
+project:
+  type: website
+  output-dir: _site
+  
+website:
+  title: "Wiesehahn"
+  description: "This is Jens Wiesehahns homepage"
+  site-url: https://wiesehahn.github.io
+  repo-url: https://github.com/wiesehahn/wiesehahn.github.io
+  favicon: /images/triangle_favicon.png
+  open-graph: true
+  twitter-card:
+    creator: '@JensWiesehahn'
+  search: false
+  # reader-mode: true
+  navbar:
+    # title: false
+    title: "Jens<span class='icon-line'></span>Wiesehahn"
+    logo: /images/triangle_logo_500x500.png
+    logo-alt: "Website logo image"
+    logo-href: /index.html #https://wiesehahn.github.io/
+    collapse: true
+
+    left:
+      #- href: index.qmd
+      #  text: "Menu_Title" # Menu title of document, automatically from document title if not provided
+      
+      - href: posts.qmd
+        text: "Posts"
+      
+    right:    
+      - text: "Resume"
+        href: resume.qmd
+
+      - icon: github
+        href: https://github.com/wiesehahn
+      - icon: twitter
+        href: https://twitter.com/JensWiesehahn
+      - icon: mastodon
+        href: https://elk.zone/fosstodon.org/@JensWiesehahn
+      - icon: envelope-fill
+        href: mailto::wiesehahn.jens@gmail.com
+
+  page-footer:
+    border: false
+    left: "© 2023, [Jens Wiesehahn](https://wiesehahn.github.io)"
+    right:
+      - icon: github
+        href: https://github.com/wiesehahn/wiesehahn.github.io
+
+format:
+  html: # (https://quarto.org/docs/reference/formats/html.html)
+    theme: [litera, assets/custom_theme.scss]
+    css: assets/custom_styles.css
+    mainfont: Nunito
+    monofont: Roboto Mono
+    toc: false
+    smooth-scroll: true
+    highlight-style: arrow
+    page-layout: full
+    code-copy: hover
+    code-overflow: wrap
+    code-line-numbers: false
+    grid:
+      sidebar-width: 250px
+      body-width: 1200px
+      margin-width: 250px
+    
+    
+
+
+

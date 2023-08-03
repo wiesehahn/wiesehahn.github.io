@@ -1,0 +1,19 @@
+---
+title: "Posts"
+listing:
+  id: posts
+  contents: posts/**/*.qmd
+  sort: "date desc"
+  type: default
+  categories: unnumbered
+  sort-ui: false
+  filter-ui: false
+  fields: [title, description, categories, image] # all possible fields under https://quarto.org/docs/websites/website-listings.html#listing-fields
+  feed: false
+  image-placeholder: /images/triangle_logo_desaturated.png
+page-layout: full
+toc: false
+---
+
+::: {#posts}
+:::

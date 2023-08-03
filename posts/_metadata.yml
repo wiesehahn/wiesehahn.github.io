@@ -1,0 +1,49 @@
+# Options specified here will apply to all posts in this folder
+
+# freeze computational output
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: true
+
+# (https://quarto.org/docs/authoring/title-blocks.html#title-banners)
+title-block-banner: true
+# title-block-banner-color: "#FFDDFF"
+# title-block-style: default
+# title-block-banner: "#FFDDFF"
+# title-block-banner: images/banner.jpeg
+
+
+# Author name of all blog posts (https://quarto.org/docs/authoring/front-matter.html#author)
+# author-title: Author
+author:
+  - name: Jens Wiesehahn
+    # id: jw
+    # orcid: 
+    # email: wiesehahn.jens@gmail.com
+    # affiliation: 
+      # - name: NW-FVA
+        # city: Göttingen
+        # state:
+        # url: 
+
+# copyright: 
+#   holder: Jens Wiesehahn
+#   year: 2023
+
+#license: CC BY-NC
+
+# (https://quarto.org/docs/authoring/create-citeable-articles.html)
+citation: true
+appendix-cite-as: display # (false, bibtex, display)
+
+toc: true    
+toc-depth: 2
+toc-title: Contents
+
+# code-fold: show
+# code-summary: "Toggle the code"
+# code-tools: true
+
+execute:
+  echo: true
+  message: true
+  warning: true

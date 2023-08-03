@@ -1,0 +1,424 @@
+/*-- scss:defaults --*/
+
+// use litera as the base
+// https://github.com/thomaspark/bootswatch/tree/v5/dist/litera
+$theme: "litera" !default;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Nunito&family=Roboto+Mono&display=swap');
+
+//$headings-font-family: 'Libre Franklin', sans-serif;
+
+$white:    #fefefe !default;
+$gray-100: #F8F8FA !default;
+$gray-200: #E9E9EF !default;
+$gray-300: #DCDCE6 !default;
+$gray-400: #CECEDA !default;
+$gray-500: #ADADBD !default;
+$gray-600: #868696 !default;
+$gray-700: #494957 !default;
+$gray-800: #343440 !default;
+$gray-900: #212129 !default;
+$black:    #000 !default;
+
+$blue-400: #4588ec !default;
+$blue-500: #2a6de0 !default;
+$blue-600: #0011bb !default;
+$blue-700: #020f9f !default;
+$blue-800: #010b76 !default;
+
+
+$blue:    #4582ec !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #d9534f !default;
+$orange:  #fd7e14 !default;
+$yellow:  #f0ad4e !default;
+$green:   #02b875 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+// from imag logo
+$highlight-pink:  #f10087 !default;
+$highlight-yellow:#fff04c !default;
+$highlight-blue:  #00b0ea !default;
+
+// standard colors
+$light:  $white !default;
+$dark:   $gray-900 !default;
+
+$primary-color: $blue-800 !default;
+$second-color:  $blue-700 !default;
+$third-color:   $blue-600 !default;
+
+
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $orange !default;
+$danger:        $red !default;
+
+
+// colour tweaks to theme
+$body-bg: $light;
+$body-color: $dark;
+
+$navbar-bg: $body-bg; 
+$navbar-fg: $body-color;
+
+$code-bg: darken($body-bg, 3%);
+$code-color: $highlight-pink;
+
+$code-block-bg: darken($body-bg, 3%);
+$code-block-border-color: $body-bg;
+
+$card-bg: $body-bg;
+$card-border-color: $gray-300;
+
+
+// font sizes;
+$font-size-base:   1rem !default; // Assumes the browser default, typically `16px`
+$h1-font-size:     $font-size-base * 2.5 !default;
+$h2-font-size:     $font-size-base * 2 !default;
+$h3-font-size:     $font-size-base * 1.75 !default;
+$h4-font-size:     $font-size-base * 1.5 !default;
+$h5-font-size:     $font-size-base * 1.25 !default;
+$h6-font-size:     $font-size-base !default;
+
+
+h1, h2, h3, h4, h5 {
+    font-weight: 300;
+}
+
+$code-font-size: $font-size-base;
+
+code {
+    font-feature-settings: 'dlig' 0, 'liga' 0, 'calt' 1, 'zero' 1, 'ss02' 0;
+}
+
+code span.co {
+  font-family: "MonoLisa-RegularItalic", "Fira Mono", monospace;
+}
+
+h1 code {
+  font-size: $h1-font-size;
+}
+
+h2 code {
+  font-size: $h2-font-size;
+}
+
+h3 code {
+  font-size: $h3-font-size;
+}
+
+h4 code {
+  font-size: $h4-font-size;
+}
+
+h5 code {
+  font-size: $h5-font-size;
+}
+
+h6 code {
+  font-size: $h6-font-size;
+}
+
+// callouts
+$callout-color-note: $blue;
+$callout-color-tip: $green;
+$callout-color-caution: $purple;
+$callout-color-warning: $orange;
+$callout-color-important: $red;
+
+/*-- scss:rules --*/
+
+// color classes
+.primary-color {
+    color: $primary-color;
+}
+
+.second-color {
+  color: $second-color;
+}
+
+.third-color {
+  color: $third-color;
+}
+
+// code
+pre.sourceCode {
+  border-radius: 0;
+  border-left-color: $gray-300;
+}
+
+// light vs dark modes
+.light-mode {
+  display: block; 
+}
+.dark-mode {
+  display: none;
+}
+
+// links
+a {
+  color: $body-color;
+  text-decoration: underline;
+  text-decoration-color: lighten($body-color, 50%);// $body-color;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .1rem;
+  text-underline-position: under;
+}
+
+a:hover {
+  color: $third-color;
+  text-decoration-color:$highlight-blue;
+}
+
+.toc-actions a {
+  text-decoration: none !important;  
+  border-bottom: 0;
+}
+
+.toc-actions a:hover {
+  color: $primary-color;
+}
+
+div.tippy-content a:hover {
+  text-decoration-color: $primary-color;
+}
+
+// navbar
+.navbar-title {
+  font-size: $font-size-base * 1.5;
+}
+
+// the line in the navbar logo
+.icon-line {
+  display: block;
+  background: $dark;
+  width: 100%;
+  height: 4px;
+  margin: auto;
+  display: table;
+  margin-top: -6px;
+  margin-bottom: -6px;
+}
+
+/* keep text the body colour when active
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active {
+    color: $body-color;
+}
+*/
+
+// hover on navbar
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+  color: $third-color;
+}
+.navbar-expand-lg .navbar-nav .nav-link.active {
+  color: $third-color;
+}
+
+
+// stop the name in my icon from changing colour on hover
+.navbar-title:hover {
+    color: $body-color;
+}
+
+// animated underline on hover, when navbar shows as row
+@media screen and (min-width: 992px) {
+  a.nav-link {
+    position: relative;
+  }
+  
+  .navbar .navbar-nav .nav-item {
+    position: relative;
+  }
+  
+  .navbar .navbar-nav .nav-item::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: $primary-color;
+    width: 0%;
+    content: "";
+    height: 4px;
+    transition: all 0.3s;
+  }
+
+  .navbar .navbar-nav .nav-item:hover::after {
+    width: 90%;
+  }
+}
+
+// header styles (more in ek-styles.css)
+#quarto-header {
+  text-transform: uppercase;
+  font-family: $headings-font-family;
+}
+
+/*
+h1, h2, h3, h4, h5 {
+  text-transform: uppercase;
+}
+*/
+/*
+h1 {
+  text-transform: uppercase;
+}
+*/
+
+.heading-font {
+  font-family: $headings-font-family;
+  //font-family: "LEMONMILKPro-Regular", Jost, Helvetica, sans-serif;
+}
+
+.home-header {
+  font-family: $headings-font-family;
+  font-size: $font-size-base * 3;
+}
+
+h2, .h2 {
+    border-bottom: 1px solid $gray-300;
+    padding-bottom: .5rem;
+}
+
+// iframes for slides embedded in talks pages
+iframe.slide-deck {
+  border: 3px solid $gray-700;
+  width: 100%;
+}
+
+.ar4x3 {
+  aspect-ratio: 4 / 3;  
+}
+
+.ar3x2 {
+  aspect-ratio: 3 / 2;  
+}
+
+// icon-links
+.icon-link, div.quarto-about-jolla .about-link {
+    background-color: transparent;
+    color: $primary-color;
+    //border: 2px solid !important;
+    border: 2px solid;
+    border-color: $primary-color;
+    padding: 5px .4rem 5px .4rem !important;
+    margin-top: 4px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    border-radius: 5px; 
+    display: inline-block;
+    text-decoration: none;
+}
+
+.icon-link:hover, div.quarto-about-jolla .about-link:hover{
+    background-color: $primary-color;
+    color: $body-bg;
+    border-color: $primary-color;
+    text-decoration: none;
+}
+
+// for cards on home page
+#card-first-color {
+  background-color: $body-bg;
+  border: 4px solid $primary-color;
+  border-radius: 5px; 
+}
+
+#card-second-color {
+  background-color: $body-bg;
+  border: 4px solid $second-color;
+  border-radius: 5px; 
+}
+
+#card-third-color {
+  background-color: $body-bg;
+  border: 4px solid $third-color;
+  border-radius: 5px; 
+}
+
+.card-link {
+    background-color: $primary-color;
+    color: $body-bg;
+    border: 4px solid $primary-color;
+    border-color: $primary-color;
+    padding: 5px .5rem 5px .5rem !important;
+    margin: 0;
+    border-radius: 5px; 
+    display: inline-block;
+    text-decoration: none;  
+    font-size: $h5-font-size;
+}
+
+.card-link:hover {
+  background-color: $body-bg;
+  color: $primary-color;
+}
+
+.second-color-link{
+    background-color: $second-color;
+    border-color: $second-color;
+    color: $body-bg;
+}
+
+.second-color-link:hover {
+  color: $second-color;
+  border-color: $second-color;
+}
+
+.third-color-link{
+    background-color: $third-color;
+    border-color: $third-color;
+    color: $body-bg;
+}
+
+.third-color-link:hover {
+  color: $third-color;
+  border-color: $third-color;
+}
+
+
+.navbar-logo{
+  min-height:70px;
+  overflow: hidden; /* Hide any overflow when the image scales up */
+}
+
+/* Apply styles to the image */
+.navbar-logo {
+  width: 100%; 
+  height: 100%; 
+  transition: transform 0.3s ease;
+}
+
+/* Apply the hover effect to the image */
+.navbar-logo:hover {
+  transform: scale(1.2); /* Increase the image size by 20% on hover */
+}
+
+
+.navbar-title:hover > .icon-line {
+  animation-duration: 600ms;
+  animation-name: line-expand;
+}
+
+@keyframes line-expand {
+  from {
+      width: 0%;
+      //background-color: $third-color;
+  }
+  
+  to {
+      width: 100%;
+      //background-color: $primary-color;
+  }
+}
+
+
+
+.resume-jobs-time {
+  font-weight: 500;
+}

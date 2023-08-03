@@ -1,0 +1,1 @@
+[_metadata.yml]() contains shared metadata for all documents within the `posts` directory
