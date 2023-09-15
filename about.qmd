@@ -1,0 +1,32 @@
+---
+title: "About"
+format:
+    html:
+        toc: true
+---
+
+
+### Jobs
+
+{{< include /content/about/_jobs.qmd >}}
+
+
+### Presentations
+
+#### Presenter
+
+{{< include /content/about/_presentations_presenter.qmd >}}
+
+
+#### Co-Presenter
+
+{{< include /content/about/_presentations_copresenter.qmd >}}
+
+### Attended Conferences / Workshops
+
+{{< include /content/about/_attended.qmd >}}
+
+
+--- 
+
+##### ([deutsche Version](/content/about/about_de.html))

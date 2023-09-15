@@ -1,0 +1,25 @@
+
+*since Apr 2020*  
+**Remote Sensing and GIS, Northwest German Forest Research Institute**  
+research associate
+Processing and analysis of geodata for forest disturbance mapping, derivation of forest-relevant parameters from VHR data, orthoimages and ALS data
+
+*03/2019 - 12/2019*  
+**Forest Inventory and Remote Sensing, University Göttingen**  
+research associate  
+Satellite-based land-cover analysis of oilpalm dominated landscapes / forest disturbance mapping of north-west Germany / teaching forest inventories, remote sensing and GIS
+
+*10/2016 - 02/2019*  
+**Institute of Forest Ecosystems, Thünen-Institute**  
+research associate  
+Organisation, quality management and analysis for the German Carbon Inventory 2017 (CI17) / preparatory work for the fourth national forest inventory (BWI4) / modelling survival rates of forest stands related to climate change
+
+*05/2015	- 09/2016*  
+**Forest Inventory and Remote Sensing, University Göttingen**  
+research assistant  
+Supervision of students in courses on forest inventories, remote sensing and GIS (QGIS)
+
+*10/2013 - 04/2015*  
+**Ecosystem Modelling, University Göttingen**  
+research assistant  
+Supervision of students on Geographic Information Systems (ArcGIS)

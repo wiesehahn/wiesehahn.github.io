@@ -29,8 +29,8 @@ website:
         text: "Posts"
       
     right:    
-      - text: "Resume"
-        href: resume.qmd
+      - text: "About"
+        href: about.qmd
 
       - icon: github
         href: https://github.com/wiesehahn
@@ -52,6 +52,9 @@ format:
   html: # (https://quarto.org/docs/reference/formats/html.html)
     theme: [litera, assets/custom_theme.scss]
     css: assets/custom_styles.css
+    include-after-body:
+      - text: |
+          <script type="text/javascript" src="/assets/vanilla-tilt.min.js"></script>
     mainfont: Nunito
     monofont: Roboto Mono
     toc: false

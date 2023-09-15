@@ -39,7 +39,7 @@ $green:   #02b875 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
-// from imag logo
+// from image logo
 $highlight-pink:  #f10087 !default;
 $highlight-yellow:#fff04c !default;
 $highlight-blue:  #00b0ea !default;
@@ -417,8 +417,26 @@ iframe.slide-deck {
   }
 }
 
-
-
 .resume-jobs-time {
   font-weight: 500;
+}
+
+//set style for tags (from listing-category=
+.category-tag {
+  color: #6c757d;
+  border: solid 1px #dee2e6;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  font-size: .65em;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .15em;
+  padding-bottom: .15em;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.tilt-effect {
+  data-tilt: "";
 }
