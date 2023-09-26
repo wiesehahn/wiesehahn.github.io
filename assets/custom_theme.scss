@@ -5,9 +5,15 @@
 $theme: "litera" !default;
 
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Nunito&family=Roboto+Mono&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Nunito&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Nunito:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&family=Roboto+Mono:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
 
-//$headings-font-family: 'Libre Franklin', sans-serif;
+// fonts
+
+$font-family-sans-serif: 'Nunito', sans-serif, !default;
+$font-family-monospace: 'Roboto Mono', monospace;
+$headings-font-family: 'Libre Franklin', sans-serif !default;
+
 
 $white:    #fefefe !default;
 $gray-100: #F8F8FA !default;
@@ -272,7 +278,6 @@ h1 {
 
 .heading-font {
   font-family: $headings-font-family;
-  //font-family: "LEMONMILKPro-Regular", Jost, Helvetica, sans-serif;
 }
 
 .home-header {
