@@ -5,6 +5,20 @@
 $theme: "litera" !default;
 
 
+// The left hand sidebar
+$grid-sidebar-width: 250px !default;
+
+// The main body
+$grid-body-width: 700px !default;
+
+// The right hand margin bar
+$grid-margin-width: 250px !default;
+
+// The gutter that appears between the above columns
+$grid-column-gutter-width: 1.5rem !default;
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Nunito&family=Roboto+Mono&display=swap');
 
 //$headings-font-family: 'Libre Franklin', sans-serif;
@@ -255,7 +269,7 @@ div.tippy-content a:hover {
 
 // header styles (more in ek-styles.css)
 #quarto-header {
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-family: $headings-font-family;
 }
 

@@ -1,7 +1,7 @@
 
+- Fernerkundungsbasiertes Nationales Erfassungssystem für Waldschäden - FNEWS 
+  *(FOWITA conference, 12.09.2023)*
 - [A remote sensing-based national forest damage monitoring system for Germany](https://www.openagrar.de/receive/openagrar_mods_00086804)  
   *(ForestSat conference, 30.08.2022)*
 - [Mapping Forest Change Areas and Assessing Forest Disturbance Agents from Sentinel-2 Time Series, EARSeL Cyprus 2022](https://cyprus2022.earsel.org/assets/finalAgenda.pdf)  
   *(EARSeL symposium, 13.09.2022)*
-- Fernerkundungsbasiertes Nationales Erfassungssystem für Waldschäden  
-  *(FOWITA conference, 12.09.2023)*
