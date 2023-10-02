@@ -65,6 +65,8 @@ format:
     code-copy: hover
     code-overflow: wrap
     code-line-numbers: false
+    link-external-icon: true
+    link-external-newwindow: true
     
     
 

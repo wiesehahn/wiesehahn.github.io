@@ -17,7 +17,7 @@ title-block-banner: true
 author:
   - name: Jens Wiesehahn
     # id: jw
-    # orcid: 
+    orcid: 0000-0002-4482-3012
     # email: wiesehahn.jens@gmail.com
     # affiliation: 
       # - name: NW-FVA
@@ -44,6 +44,7 @@ toc-title: Contents
 # code-tools: true
 
 execute:
+  eval: false
   echo: true
-  message: true
-  warning: true
+  #message: true
+  #warning: true

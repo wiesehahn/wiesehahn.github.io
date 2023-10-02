@@ -30,14 +30,10 @@ date: YYYY-MM-DD
 #        # state:
 #        # url: 
 
-site-url: https://github.com/wiesehahn/quarto_website_template
+site-url: https://wiesehahn.github.io/
 
 # image: /images/IMAGE.png
 # image-alt: |
-
-# keywords:
-#   - KEYWORD_1
-#   - KEYWORD_2
 
 # copyright: 
 #   holder: Wiesehahn, Jens
