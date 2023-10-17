@@ -190,8 +190,7 @@ A detailed overview about possibilities and limitations of this technique was wr
 
 
 ::: {.callout-note}
-It is not entirely clear to me why a starting point of -10000 is used, as this is the limiting factor for the lowest elevation. The lowest elevation on earth (Mariana Trench) is approximately 10984 m deep, so this can not be encoded in this format. 
-Also evelation values with higher precision (e.g. in the centimeter range) can not precisely encoded with a factor of 0.1.
+With this encoding formula there are certain limitations which data can be encoded. A starting value of -10000 for example means that the lowest elevation on earth (Mariana Trench), which is approximately 10984 m deep, can not be encoded in this format. Also evelation values with higher precision (e.g. in the centimeter range) can not precisely encoded with a factor of 0.1.
 :::
 
 
