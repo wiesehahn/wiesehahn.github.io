@@ -3,11 +3,12 @@ project:
   output-dir: _site
   
 website:
-  title: "Wiesehahn"
-  description: "This is Jens Wiesehahns homepage"
+  title: "Jens Wiesehahn"
+  description: "This is Jens Wiesehahn's homepage"
   site-url: https://wiesehahn.github.io
   repo-url: https://github.com/wiesehahn/wiesehahn.github.io
   favicon: /images/triangle_favicon.png
+  image: /images/triangle_logo_500x500.png
   open-graph: true
   twitter-card:
     creator: '@JensWiesehahn'
@@ -15,7 +16,7 @@ website:
   # reader-mode: true
   navbar:
     # title: false
-    title: "Jens<span class='icon-line'></span>Wiesehahn"
+    title: "JENS<span class='icon-line'></span>WIESEHAHN"
     logo: /images/triangle_logo_500x500.png
     logo-alt: "Website logo image"
     logo-href: /index.html #https://wiesehahn.github.io/
@@ -66,10 +67,6 @@ format:
     code-line-numbers: false
     link-external-icon: true
     link-external-newwindow: true
-    grid:
-      sidebar-width: 250px
-      body-width: 1200px
-      margin-width: 250px
     
     
 

@@ -1,9 +1,11 @@
 
 - [[{{< iconify lucide presentation >}}]{.second-color} Integration von ALS-Daten für ein verbessertes Waldschadensmonitoring](https://wiesehahn.github.io/presentation-fowita23/presentation.html)  
-  *(FOWITA conference, 13.09.2023)*
+  *(FOWITA conference, Dresden, 13.09.2023)*
 - [[{{< iconify lucide presentation >}}]{.second-color} Enhancing forest disturbance monitoring with ALS data integration](https://wiesehahn.github.io/presentation-silvilaser23/presentation.html)  
-  *(SilviLaser conference, 06.09.2023)*
+  *(SilviLaser conference, London, 06.09.2023)*
 - [[{{< iconify lucide presentation >}}]{.second-color} Licht für den Wald - Anwendungsmöglichkeiten von Lidar im Forstbereich](https://wiesehahn.github.io/lidar_im_forst_vortrag/presentation.html)  
-  *(Northwest German Forest Reasearch Institute, 13.02.2023)*
+  *(Northwest German Forest Reasearch Institute, Göttingen, 13.02.2023)*
 - [[{{< iconify lucide presentation >}}]{.second-color} Waldmasken - Ein Überblick](https://wiesehahn.github.io/waldmaske/presentation)  
   *(Copernicus-Netzwerkbüro Wald, 17.01.2023)*
+- Remote sensing for forestry in Northwest Germany  
+  *(Workshop Forest@Photonics, Marburg, 07.07.2022)*
