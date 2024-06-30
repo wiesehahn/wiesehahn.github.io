@@ -5,7 +5,7 @@ format:
         toc: true
 ---
 
-**forester by education, nature lover by heart**
+**forester by education, technologist by interest, nature lover by heart**
 
 I work as a forest scientist in the field of remote sensing and geospatial data analysis. Leveraging cutting-edge tools and technologies to integrate all kinds of spatial information for an in-depth analysis and advanced visualizations. 
 
