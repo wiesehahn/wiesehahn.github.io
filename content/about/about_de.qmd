@@ -20,6 +20,10 @@ format:
 
 {{< include /content/about/_presentations_copresenter.qmd >}}
 
+### Publikationen
+
+{{< include /content/about/_publications.qmd >}}
+
 ### Fortbildungen / Konferenzen / Workshops
 
 {{< include /content/about/_attended.qmd >}}
