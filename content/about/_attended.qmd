@@ -1,4 +1,6 @@
 
+- [FOSSGIS-Konferenz 2024](https://fossgis-konferenz.de/2024/)
+- [Annual LiDAR/EFI Cross-Country Checkup 2024](https://www.cif-ifc.org/events/annual-lidar-efi-cross-country-checkup-3/)
 - [FOWITA 2023](https://www.fowita2023.de/)
 - [SilviLaser 2023](https://blogs.ucl.ac.uk/silvilaser2023/)
 - [Remote Sensing Lectures - Point clouds for forest applications](https://www.wsl.ch/en/about-wsl/in-dialogue-with-wsl/details/remote-sensing-lectures-point-clouds-for-forest-applications.html)
@@ -7,7 +9,6 @@
 - [Nutzerkonferenz des Copernicus Netzwerkbüros Wald](https://www.thuenen.de/de/newsroom/veranstaltungen/details/nutzerkonferenz-des-copernicus-netzwerkbueros-wald-2)
 - [Modernisierung und Digitalisierung der Forsteinrichtung](https://veranstaltungen.fnr.de/seminarreihe-digitalisierung/programm)
 - [FOSSGIS-Konferenz 2023](https://fossgis-konferenz.de/2023/)
-- [Annual LiDAR/EFI Cross-Country Checkup 2023](https://www.cif-ifc.org/series/2023-annual-lidar-efi-cross-country-checkup/)
 - [3rd International Workshop Point Cloud Processing](https://pcp2023.ifp.uni-stuttgart.de/#home)
 - [Annual LiDAR/EFI Cross-Country Checkup 2023](https://www.cif-ifc.org/events/annual-lidar-efi-cross-country-checkup-2/)
 - [Waldmasken und Waldstrukturen - Seminar](https://netzwerk-wald.d-copernicus.de/online-seminare/)

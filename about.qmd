@@ -22,6 +22,10 @@ format:
 
 {{< include /content/about/_presentations_copresenter.qmd >}}
 
+### Publications
+
+{{< include /content/about/_publications.qmd >}}
+
 ### Attended Conferences / Workshops
 
 {{< include /content/about/_attended.qmd >}}
