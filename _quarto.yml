@@ -32,7 +32,8 @@ website:
     right:    
       - text: "About"
         href: about.qmd
-
+      - icon: triangle-fill
+        href: https://wiesehahn.github.io
       - icon: github
         href: https://github.com/wiesehahn
       - icon: twitter
@@ -44,7 +45,7 @@ website:
 
   page-footer:
     border: false
-    left: "© 2023, [Jens Wiesehahn](https://wiesehahn.github.io)"
+    left: "© 2024, [Jens Wiesehahn](https://wiesehahn.github.io)"
     right:
       - icon: github
         href: https://github.com/wiesehahn/wiesehahn.github.io
@@ -65,7 +66,7 @@ format:
     code-copy: hover
     code-overflow: wrap
     code-line-numbers: false
-    link-external-icon: true
+    #link-external-icon: true
     link-external-newwindow: true
     
     

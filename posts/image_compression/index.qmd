@@ -107,7 +107,7 @@ For a smooth visualization experience it is necessary to have overviews[^overvie
 : Comparison of orthophoto compression types with overviews 
 
 
-Lossless as well as lossy compression worked very well with the WEBP image format. The downside is that not all browsers and programs support the format (see [here](https://caniuse.com/webp). 
+Lossless as well as lossy compression worked very well with the WEBP image format. The downside is that not all browsers and programs support the format (see [here](https://caniuse.com/webp)). 
 
 
 #### Without Overviews

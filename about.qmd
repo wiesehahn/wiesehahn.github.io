@@ -5,6 +5,16 @@ format:
         toc: true
 ---
 
+**forester by education, technologist by interest, nature lover by heart**
+
+I work as a forest scientist in the field of remote sensing and geospatial data analysis. Leveraging cutting-edge tools and technologies to integrate all kinds of spatial information for an in-depth analysis and advanced visualizations. 
+
+I am passionate about maps of all kinds and have recently developed a keen interest in Lidar data. Whenever possible, I advocate for the use of free and open-source software (FOSS) solutions, using RStats extensively and encouraging my colleagues to support and adopt FOSS.
+
+I firmly believe that digital technologies hold immense potential to revolutionize our approach to environmental management and conservation.
+
+I aim to contribute to a greener future.
+
 
 ### Jobs
 

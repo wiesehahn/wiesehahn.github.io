@@ -13,7 +13,7 @@ title: "Forest | Remote Sensing | GIS"
 [Forest Monitoring](/posts.html#category=Forest Monitoring){.category-tag}
 [Forest Inventory](/posts.html#category=Forest Inventory){.category-tag}
 [Lidar](/posts.html#category=Lidar){.category-tag}
-[Laser Scanning](/posts.html#category=Laser Scanning){.category-tag}
+[Laserscanning](/posts.html#category=Laserscanning){.category-tag}
 [Sentinel-2](/posts.html#category=Sentinel-2){.category-tag}
 [Orthoimagery](/posts.html#category=Orthoimagery){.category-tag}
 [Digitalisation](/posts.html#category=Digitalisation){.category-tag}
