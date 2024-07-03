@@ -2,7 +2,7 @@
 ---
 nocite: |
     @wiesehahnBundesweiteProjektionUeberlebensraten2019
-bibliography: ../../../references.bib
+bibliography: ../references.bib
 ---
 
 ::: {#refs}
