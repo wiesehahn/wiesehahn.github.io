@@ -11,7 +11,7 @@ listing:
   fields: [title, description, categories, image] # all possible fields under https://quarto.org/docs/websites/website-listings.html#listing-fields
   feed: false
   image-placeholder: /images/triangle_logo_desaturated.png
-  # image-height: 200px
+  image-height: 200px
 page-layout: full
 toc: false
 ---
