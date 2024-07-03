@@ -37,9 +37,9 @@ date-modified: last-modified
 
 site-url: https://wiesehahn.github.io/
 
-# image: orthoimage_sample_2006.jpeg
-# image-alt: |
-#  Orthoimage 
+image: lidar_availability_preview.jpg
+image-alt: |
+  Forest plot rendered from ALS data 
 
 # copyright: 
 #   holder: Wiesehahn, Jens
