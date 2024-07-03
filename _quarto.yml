@@ -69,7 +69,7 @@ format:
     #link-external-icon: true
     link-external-newwindow: true
     
-bibliography: references.bib    
-
+bibliography: references.bib
+link-citations: true
 
 
