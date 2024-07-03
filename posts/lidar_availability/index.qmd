@@ -45,7 +45,9 @@ image-alt: |
 #   holder: Wiesehahn, Jens
 #   year: 2024
 
-# toc: false
+toc: true
+toc-depth: 3
+toc-expand: 3
 
 draft: false
 ---
