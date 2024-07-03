@@ -265,3 +265,11 @@ Geodata collection, administration and publication in Germany is predominantly o
   - ALS_3 in 2020-2025, ([overview](https://tlbg.thueringen.de/fileadmin/TLBG/Vertrieb/uebersichten/dgm/tlbg-uebersicht-dgm-2020-2025_.pdf))
 - nominal density: 4 points per m²
 - historical data from 1996 is also available in parts
+
+
+
+```{ojs}
+fileContent = FileAttachment("https://raw.githubusercontent.com/wiesehahn/lidar-availability/main/availability_europe.md").text()
+
+md`${fileContent}`
+```
