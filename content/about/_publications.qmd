@@ -1,0 +1,9 @@
+
+---
+nocite: |
+    @wiesehahnBundesweiteProjektionUeberlebensraten2019
+bibliography: ../../references.bib
+---
+
+::: {#refs}
+:::
