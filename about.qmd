@@ -16,7 +16,7 @@ I firmly believe that digital technologies hold immense potential to revolutioni
 I aim to contribute to a greener future.
 
 
-### Jobs
+### Professional Experience
 
 {{< include /content/about/_jobs.qmd >}}
 
