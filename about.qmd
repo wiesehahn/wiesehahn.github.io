@@ -20,6 +20,9 @@ I aim to contribute to a greener future.
 
 {{< include /content/about/_jobs.qmd >}}
 
+### Education
+
+{{< include /content/about/_education.qmd >}}
 
 ### Presentations
 

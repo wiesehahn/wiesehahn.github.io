@@ -1,11 +1,10 @@
 ---
-title: "CV - Jens Wiesehahn"
 format:
     html:
         toc: true
     typst:
         papersize: a4
-        title: CV
+        title: CV - Jens Wiesehahn
 ---
 
 ### Arbeitserfahrung
