@@ -1,16 +1,20 @@
 ---
-title: "About"
+title: "CV - Jens Wiesehahn"
 format:
     html:
         toc: true
     typst:
         papersize: a4
+        title: CV
 ---
 
 ### Arbeitserfahrung
 
 {{< include /content/about/_jobs_de.qmd >}}
 
+### Studium
+
+{{< include /content/about/_education_de.qmd >}}
 
 ### Präsentationen
 
