@@ -107,6 +107,25 @@ Geodata collection, administration and publication in Germany is predominantly o
 [^5]: specified minimum number of points per m²
 
 
+```r
+library(mapgl)
+
+maplibre(style = "https://web3d.basemap.de/maplibre/bm_web_col.json",
+         center = c(10, 52),
+         zoom = 12
+) |> 
+  add_fullscreen_control(position = "top-left") |> 
+  add_navigation_control()
+
+mapboxgl(center = c(10, 52),
+         zoom = 12
+) |> 
+  add_fullscreen_control(position = "top-left") |> 
+  add_navigation_control()
+
+```
+
+
 ### [Baden-Württemberg](https://www.lgl-bw.de/Produkte/3D-Produkte/Laserscandaten/)
 
 - [DGM025](https://www.lgl-bw.de/Produkte/3D-Produkte/Digitale-Gelaendemodelle/) and [DOM1](https://www.lgl-bw.de/Produkte/3D-Produkte/Digitale-Oberflaechenmodelle/) available as open data since 2024
