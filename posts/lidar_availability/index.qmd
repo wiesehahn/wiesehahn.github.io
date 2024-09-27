@@ -107,22 +107,16 @@ Geodata collection, administration and publication in Germany is predominantly o
 [^5]: specified minimum number of points per m²
 
 
-```r
+```{r}
 library(mapgl)
-
-maplibre(style = "https://web3d.basemap.de/maplibre/bm_web_col.json",
-         center = c(10, 52),
-         zoom = 12
-) |> 
-  add_fullscreen_control(position = "top-left") |> 
-  add_navigation_control()
-
-mapboxgl(center = c(10, 52),
-         zoom = 12
-) |> 
-  add_fullscreen_control(position = "top-left") |> 
-  add_navigation_control()
-
+maplibre(
+    style =
+        "https://sgx.geodatenzentrum.de/gdz_basemapde_vektor/styles/bm_web_gry.json",
+    center = c(10, 51),
+    zoom = 5
+) |>
+    add_fullscreen_control(position = "top-left") |>
+    add_navigation_control()
 ```
 
 
