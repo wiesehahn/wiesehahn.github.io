@@ -16,7 +16,7 @@ categories:
   - Raster Data
 
 date: 2022-04-09
-# date-modified: last-modified
+date-modified: last-modified
 ## `today` and `last-modified` will be rendered by quarto (e.g. date: today)
 
 ## author optional, default for all is set in metadata.yml
@@ -266,10 +266,11 @@ But of course these tests may not be representitive for all geospatial raster da
 
 ## Additional Sources
 
-- [http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies](http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies)
-- [https://wheregroup.com/blog/der-weg-zum-optimalen-geotiff](https://wheregroup.com/blog/der-weg-zum-optimalen-geotiff)
-- [https://kokoalberti.com/articles/geotiff-compression-optimization-guide](https://kokoalberti.com/articles/geotiff-compression-optimization-guide)
-- [https://gist.github.com/kgjenkins/877ff0bf7aef20f87895a6e93d61fb43](https://gist.github.com/kgjenkins/877ff0bf7aef20f87895a6e93d61fb43)
-- [https://medium.com/@frederic.rodrigo/optimization-of-rgb-dem-tiles-for-dynamic-hill-shading-with-mapbox-gl-or-maplibre-gl-55bef8eb3d86](https://medium.com/@frederic.rodrigo/optimization-of-rgb-dem-tiles-for-dynamic-hill-shading-with-mapbox-gl-or-maplibre-gl-55bef8eb3d86)
+- [GeoTiff Compression for Dummies](http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies)
+- [Der Weg zum optimalen GeoTIFF](https://wheregroup.com/blog/der-weg-zum-optimalen-geotiff)
+- [Guide to GeoTIFF compression and optimization with GDAL](https://kokoalberti.com/articles/geotiff-compression-optimization-guide)
+- [TIFF compression options by Keith Jenkins](https://gist.github.com/kgjenkins/877ff0bf7aef20f87895a6e93d61fb43)
+- [Optimization of RGB DEM tiles for dynamic hill shading with Mapbox GL or MapLibre GL](https://medium.com/@frederic.rodrigo/optimization-of-rgb-dem-tiles-for-dynamic-hill-shading-with-mapbox-gl-or-maplibre-gl-55bef8eb3d86)
+- [Elevation compression and bulk distribution](https://github.com/linz/elevation/tree/master/docs/tiff-compression)
 
 
