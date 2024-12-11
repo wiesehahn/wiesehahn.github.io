@@ -25,7 +25,8 @@ website:
     left:
       #- href: index.qmd
       #  text: "Menu_Title" # Menu title of document, automatically from document title if not provided
-      
+      # - href: projects.qmd
+      #  text: "Projects"
       - href: posts.qmd
         text: "Posts"
       
@@ -40,6 +41,7 @@ website:
       #  href: https://twitter.com/JensWiesehahn
       - icon: mastodon
         href: https://elk.zone/fosstodon.org/@JensWiesehahn
+        rel: me
       - icon: linkedin
         href: https://www.linkedin.com/in/jens-wiesehahn-a35782184/
       - icon: bluesky
