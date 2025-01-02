@@ -44,14 +44,14 @@ website:
         rel: me
       - icon: linkedin
         href: https://www.linkedin.com/in/jens-wiesehahn-a35782184/
-      - icon: bluesky
-        href: https://bsky.app/profile/jenswiesehahn.bsky.social
+      - text: "{{< iconify fa6-brands bluesky >}}"
+        href: "https://bsky.app/profile/jenswiesehahn.bsky.social"
       - icon: envelope-fill
         href: mailto::wiesehahn.jens@gmail.com
 
   page-footer:
     border: false
-    left: "© 2024, [Jens Wiesehahn](https://wiesehahn.github.io)"
+    left: "© 2025, [Jens Wiesehahn](https://wiesehahn.github.io)"
     right:
       - icon: github
         href: https://github.com/wiesehahn/wiesehahn.github.io
