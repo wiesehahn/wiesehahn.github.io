@@ -55,3 +55,7 @@ draft: false
 ```{=html}
 <iframe src='https://wiesehahn.github.io/webmaps/maplibre_pmtiles.html' style="display:block; border:none; height:100vh; width:100%;"></iframe>
 ```
+
+```{=html}
+<iframe src='https://wiesehahn.github.io/webmaps/disturbances_cluster.html' style="display:block; border:none; height:100vh; width:100%;"></iframe>
+```
