@@ -272,5 +272,5 @@ But of course these tests may not be representitive for all geospatial raster da
 - [TIFF compression options by Keith Jenkins](https://gist.github.com/kgjenkins/877ff0bf7aef20f87895a6e93d61fb43)
 - [Optimization of RGB DEM tiles for dynamic hill shading with Mapbox GL or MapLibre GL](https://medium.com/@frederic.rodrigo/optimization-of-rgb-dem-tiles-for-dynamic-hill-shading-with-mapbox-gl-or-maplibre-gl-55bef8eb3d86)
 - [Elevation compression and bulk distribution](https://github.com/linz/elevation/tree/master/docs/tiff-compression)
-
-
+- [GeoTiff compression benchmarking](https://krstn.eu/GeoTiff-compression-benchmarking/)
+- [Best Practices for Cloud-Optimized GeoTIFFs (COGs) for the use in Swiss Geospatial Infastructures](https://github.com/geostandards-ch/cog-best-practices)
