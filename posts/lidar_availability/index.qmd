@@ -48,6 +48,7 @@ image-alt: |
 toc: true
 toc-depth: 3
 toc-expand: 3
+from: markdown+emoji
 
 draft: false
 ---
