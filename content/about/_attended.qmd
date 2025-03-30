@@ -1,4 +1,6 @@
 
+- [FOSSGIS-Konferenz 2025](https://fossgis-konferenz.de/2025/)
+- [SmartForest 2025](https://smartforest.ai/)
 - [INTERGEO 2024](https://www.intergeo.de/)
 - [FOSS4G Europe 2024](https://2024.europe.foss4g.org/)
 - [KWF Tagung 2024](https://kwf2020.kwf-online.de/)

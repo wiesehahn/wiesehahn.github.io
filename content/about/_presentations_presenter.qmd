@@ -1,5 +1,5 @@
 
-- **Airborne-Laserscanning in Deutschland: Verfügbarkeiten, Herausforderungen, Potenziale**  
+ [[{{< iconify lucide presentation >}}]{.second-color} **Airborne-Laserscanning in Deutschland: Verfügbarkeiten, Herausforderungen, Potenziale**](https://wiesehahn.github.io/presentation-fossgis25/presentation.html)    
   *FOSSGIS conference, Münster, 28.03.2025*
 - [[{{< iconify lucide presentation >}}]{.second-color} **Integration von ALS-Daten für ein verbessertes Waldschadensmonitoring**](https://wiesehahn.github.io/presentation-fowita23/presentation.html)  
   *FOWITA conference, Dresden, 13.09.2023*
