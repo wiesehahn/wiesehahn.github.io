@@ -1,6 +1,7 @@
 
 - [FOSSGIS-Konferenz 2025](https://fossgis-konferenz.de/2025/)
 - [SmartForest 2025](https://smartforest.ai/)
+- [Annual LiDAR/EFI Cross-Country Checkup 2025](https://www.cif-ifc.org/events/annual-lidar-efi-cross-country-checkup-4/)
 - [INTERGEO 2024](https://www.intergeo.de/)
 - [FOSS4G Europe 2024](https://2024.europe.foss4g.org/)
 - [KWF Tagung 2024](https://kwf2020.kwf-online.de/)
