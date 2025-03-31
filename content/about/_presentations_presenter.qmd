@@ -1,6 +1,8 @@
 
- [[{{< iconify lucide presentation >}}]{.second-color} **Airborne-Laserscanning in Deutschland: Verfügbarkeiten, Herausforderungen, Potenziale**](https://wiesehahn.github.io/presentation-fossgis25/presentation.html)    
+- [[{{< iconify lucide presentation >}}]{.second-color} **Airborne-Laserscanning in Deutschland: Verfügbarkeiten, Herausforderungen, Potenziale**](https://wiesehahn.github.io/presentation-fossgis25/presentation.html)    
   *FOSSGIS conference, Münster, 28.03.2025*
+- [[{{< iconify lucide presentation >}}]{.second-color} **Fernerkundung für das Monitoring von Wäldern in Zeiten des Klimawandels**](https://wiesehahn.github.io/presentation-rs4forestmonitoring/)  
+  *Northwest German Forest Reasearch Institute, Göttingen, 20.01.2025*
 - [[{{< iconify lucide presentation >}}]{.second-color} **Integration von ALS-Daten für ein verbessertes Waldschadensmonitoring**](https://wiesehahn.github.io/presentation-fowita23/presentation.html)  
   *FOWITA conference, Dresden, 13.09.2023*
 - [[{{< iconify lucide presentation >}}]{.second-color} **Enhancing forest disturbance monitoring with ALS data integration**](https://wiesehahn.github.io/presentation-silvilaser23/presentation.html)  
