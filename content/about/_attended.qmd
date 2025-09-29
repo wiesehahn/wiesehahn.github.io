@@ -1,4 +1,5 @@
 
+- [FOWITA-Konferenz 2025](https://uni-freiburg.de/fowita2025/)
 - [FOSSGIS-Konferenz 2025](https://fossgis-konferenz.de/2025/)
 - [SmartForest 2025](https://smartforest.ai/)
 - [Annual LiDAR/EFI Cross-Country Checkup 2025](https://www.cif-ifc.org/events/annual-lidar-efi-cross-country-checkup-4/)

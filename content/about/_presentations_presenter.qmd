@@ -1,4 +1,6 @@
 
+- [[{{< iconify lucide presentation >}}]{.second-color} **From Plots to Landscapes: Integrating Remote Sensing Data to Map Forest Biodiversity**](https://wiesehahn.github.io/presentation-fowita25/presentation.html)    
+  *FOWITA conference, Freiburg, 30.09.2025*
 - [[{{< iconify lucide presentation >}}]{.second-color} **Airborne-Laserscanning in Deutschland: Verfügbarkeiten, Herausforderungen, Potenziale**](https://wiesehahn.github.io/presentation-fossgis25/presentation.html)    
   *FOSSGIS conference, Münster, 28.03.2025*
 - [[{{< iconify lucide presentation >}}]{.second-color} **Fernerkundung für das Monitoring von Wäldern in Zeiten des Klimawandels**](https://wiesehahn.github.io/presentation-rs4forestmonitoring/)  
