@@ -29,3 +29,4 @@
 - [Geo for Good 2021](https://earthoutreachonair.withgoogle.com/events/geoforgood21)
 - [Explore 2021](https://www.planet.com/pulse/explore-2021-discover-the-power-of-global-connection/)
 - [SilviLaser 2021](https://silvilaser2021.at/)
+- ...
