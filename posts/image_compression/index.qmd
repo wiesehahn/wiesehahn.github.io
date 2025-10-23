@@ -184,19 +184,31 @@ The image had following properties:
 #### RGB-encoded
 
 Another possibility to store the data is to encode the elevation in 3 channels. This has the advantage that the 3 bands can be of datatype byte (0-255) which reduces file size.
-This technique is often used for web mapping, where loaded tiles should be as small as possible to reduce loading times. 
-Mapbox, Maptiler etc. use it with a precision factor of 0.1 which means that elevation is stored to the decimeter (e.g. 15.3 m). The formula to decode RGB-values to elevation is then `height = -10000 + ((R * 256 * 256 + G * 256 + B) * 0.1)`.
-A detailed overview about possibilities and limitations of this technique was written by Frédéric Rodrigo in [this article](https://medium.com/@frederic.rodrigo/optimization-of-rgb-dem-tiles-for-dynamic-hill-shading-with-mapbox-gl-or-maplibre-gl-55bef8eb3d86).
+This technique is often used for web-mapping, where loaded tiles should be as small as possible to reduce storage and loading times. 
+There are two different formats for this, varying in their encoding formula: *[Mapbox](https://docs.mapbox.com/data/tilesets/reference/mapbox-terrain-dem-v1/)*-encoded and *[Terrarium](https://github.com/tilezen/joerd/blob/master/docs/formats.md#terrarium)*-encoded. 
 
+##### Mapbox-encoding
+
+Mapbox encoding is usually the default in most applications which use RGB-encoded elevation. Mapbox, Maplibe, Maptiler etc. use it with a precision factor of 0.1 which means that elevation is stored to the decimeter (e.g. 15.3 m). The formula to decode RGB-values to elevation is then `height = -10000 + ((R * 256 * 256 + G * 256 + B) * 0.1)`. RGB channels each store 8-bits, which allows for 16,777,216 unique values.
+A detailed overview about possibilities and limitations of this technique was written by Frédéric Rodrigo in [this article](https://medium.com/@frederic.rodrigo/optimization-of-rgb-dem-tiles-for-dynamic-hill-shading-with-mapbox-gl-or-maplibre-gl-55bef8eb3d86).
 
 ::: {.callout-note}
 With this encoding formula there are certain limitations which data can be encoded. A starting value of -10000 for example means that the lowest elevation on earth (Mariana Trench), which is approximately 10984 m deep, can not be encoded in this format. Also evelation values with higher precision (e.g. in the centimeter range) can not precisely encoded with a factor of 0.1.
 :::
 
+##### Terrarium-encoding
+
+The Terrarium-encoding uses a different formula to store elevation in three bands, it can be decoded as:
+
+`height = (R * 256 + G + B / 256) - 32768`
+
+This allows for a precision of 0.00390625 m (1 / 256).
+
+
 
 ##### Encoding
 
-Here we encoded the elevation with higher precision in R using the following script:
+Here we encoded the elevation in R with Mapbox-encoding and higher precision (factor 0.01) using the following script:
 
 ```{r} 
 startingvalue <- 10000
