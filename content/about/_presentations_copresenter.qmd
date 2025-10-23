@@ -1,4 +1,6 @@
 
+- **Leaf-On vs. Leaf-Off: Implications for ALS-Based Forest Monitoring in Central Europe**  
+  *SilviLaser conference, 30.09.2025*
 - **Fernerkundungsbasiertes Nationales Erfassungssystem für Waldschäden - FNEWS**  
   *FOWITA conference, 12.09.2023*
 - [**A remote sensing-based national forest damage monitoring system for Germany**](https://www.openagrar.de/receive/openagrar_mods_00086804)  
