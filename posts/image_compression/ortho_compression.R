@@ -68,6 +68,7 @@ raster_compression <- function(dsns, options) {
 }
 
 
+
 # create list of options
 options <- list(
   # lossless
@@ -96,17 +97,18 @@ options <- list(
   list(setting = c("COMPRESS=LERC_ZSTD", "LEVEL=1")),
   list(setting = c("COMPRESS=LERC_ZSTD", "LEVEL=9")),
   list(setting = c("COMPRESS=LERC_ZSTD", "LEVEL=22")),
-  list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=YES", "JXL_EFFORT=1")),
-  list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=YES", "JXL_EFFORT=5")),
-  list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=YES", "JXL_EFFORT=9")),
+  # list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=YES", "JXL_EFFORT=1")),
+  # list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=YES", "JXL_EFFORT=5")),
+  # list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=YES", "JXL_EFFORT=9")),
   # lossy overviews
   list(setting = c("COMPRESS=WEBP", "QUALITY=100", "OVERVIEW_QUALITY=75")),
   # lossy
-  list(setting = c("COMPRESS=WEBP", "QUALITY=75")),
-  list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=1")),
-  list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=5")),
-  list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=9")),
-  list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=5", "JXL_DISTANCE=2"))
+  list(setting = c("COMPRESS=WEBP", "QUALITY=75"))
+  # only available in certain gdal builds
+  # list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=1")),
+  # list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=5")),
+  # list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=9")),
+  # list(setting = c("COMPRESS=JXL", "JXL_LOSSLESS=NO", "JXL_EFFORT=5", "JXL_DISTANCE=2"))
 )
 
 for (i in 1:length(options)) {
