@@ -3,6 +3,7 @@
 nocite: |
     @wiesehahnBundesweiteProjektionUeberlebensraten2019
     @reinoschDetailedValidationLargescale2024
+    @axerIntegratingRemoteSensing2025
 
 ---
 
