@@ -60,7 +60,7 @@ We tested various compression formats available for GeoTIFF images via GDAL on t
 
 ### Original data
 
-As test data we used five ortho-image tiles distributed in heterogeneous landscapes of Lower Saxony, Germany. They are available as Cloud Optimized Geotiff from the State Office for Geoinformation and Surveying of Lower Saxony (LGLN) via s3 storage. Each of them covers an area of 2x2 km with a resolution of 20 cm (4000x4000 px) and comes with 4 spectral bands (Red, Green, Blue and Infrared channel) uncompressed in data format Byte (eight bit unsigned integer).
+As test data we used five ortho-image tiles distributed in heterogeneous landscapes of Lower Saxony, Germany. They are available as Cloud Optimized Geotiff from the State Office for Geoinformation and Surveying of Lower Saxony (LGLN) via s3 storage. Each of them covers an area of 2x2 km with a resolution of 20 cm (10000x10000 px) and comes with 4 spectral bands (Red, Green, Blue and Infrared channel) uncompressed in data format Byte (eight bit unsigned integer).
 
 ```{bash}
 #| eval: false
