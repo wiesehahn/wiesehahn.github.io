@@ -1,0 +1,192 @@
+---
+title: Ortho photo coverage in Lower Saxony
+
+#subtitle: 
+
+description: |
+  Plot coverage of LGLN ortho photos by date
+
+abstract: | 
+  Ortho imagery in Lower Saxony is acquired by LGLN and distributed via STAC as COGs, here we access and plot basic metadata via R. 
+
+categories:
+  - COG
+  - Orthoimagery
+  - Open Source
+  - Raster Data
+  - R
+
+date: 2023-03-01
+date-modified: last-modified
+## `today` and `last-modified` will be rendered by quarto (e.g. date: today)
+
+## author optional, default for all is set in metadata.yml
+# author:
+#  - name: Jens Wiesehahn
+#    id: jw
+#    orcid: 
+#    email: wiesehahn.jens@gmail.com
+## (https://quarto.org/docs/authoring/front-matter.html#affiliation)
+#    affiliation: 
+#      - name: NW-FVA
+#        city: Göttingen
+#        # state:
+#        # url: 
+
+site-url: https://wiesehahn.github.io/
+
+image: ortho_coverage_by_month.jpeg
+image-alt: |
+  Orthoimage coverage by month
+
+# copyright: 
+#   holder: Wiesehahn, Jens
+#   year: 2023
+
+# toc: false
+
+draft: false
+---
+
+<!--------------- post content ----------------->
+
+## About LGLN opendata
+
+The State Office for Geoinformation and Land Surveying Lower Saxony (LGLN) provides a lot of its geodata as open data. And since some years they provide ortho images as well as terrain models of Lower Saxony as Cloud Optimized GeoTIFFs (COG) and reference them via Spatio Temporal Asset Catalogs (STAC). 
+Here we access the data via R to explore, vizualize and work with it programatically.
+
+More information under [opengeodata.lgln.niedersachsen.de](https://opengeodata.lgln.niedersachsen.de/#dop).
+
+
+## Working with Orthoimagery
+
+### Initialize metadata catalog
+
+The index of available data is available as a geojson file which is stored in a cloud bucket. It consists of many polygons which cover Lower Saxony and represent image tiles (2x2 km). For each tile it contains some basic metadata and links to further metadata of the images and links to the image data itself.
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "get data"
+
+# read geojson from cloud bucket
+dat <- sf::st_read("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
+
+# modify date
+dat <- dat |> 
+  dplyr::mutate(
+    date = lubridate::ymd(Aktualitaet),
+    year = lubridate::year(date),
+    month = lubridate::month(date, label = TRUE),
+    doy = lubridate::yday(date)
+  )
+```
+
+
+### Plot metadata catalog
+
+The data catalog contains information about the acquisition date of images. We can plot this data to get more information about the available images.
+
+# earliest / latest
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "get min/max date"
+
+# first and last available acquisition dates
+dat |> arrange(date) |>  slice(1) |> pull(date)
+
+dat |> arrange(desc(date)) |>  slice(1) |> pull(date)
+```
+
+
+#### Most recent coverage
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "plot latest data"
+#| fig-cap: Most recent available ortho photo coverage in Lower Saxony
+
+# latest acquisition date per tile
+dat |> 
+  dplyr::group_by(tile_id) |> 
+  dplyr::slice_max(date, n = 1) |> 
+  ggplot2::ggplot() + 
+    ggplot2::geom_sf(aes(fill = as.factor(year)), color = NA) + 
+    ggplot2::theme_void()  +
+    ggplot2::scale_fill_viridis_d(option = "plasma")
+```
+
+#### First coverage
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "plot first data"
+#| fig-cap: First available ortho photo coverage in Lower Saxony
+
+# first acquisition date per tile
+dat |> 
+  dplyr::group_by(tile_id) |> 
+  dplyr::slice_min(date, n = 1) |> 
+  ggplot2::ggplot() + 
+    ggplot2::geom_sf(aes(fill = as.factor(year)), color = NA) + 
+    ggplot2::theme_void()  +
+    ggplot2::scale_fill_viridis_d(option = "plasma")
+```
+
+
+#### Leaf-off coverage
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "plot leaf-off data"
+#| fig-cap: Available ortho photo coverage in Lower Saxony during leaf-off season (Nov - Mar)
+
+# latest leaf-off data per tile
+dat |>  
+  dplyr::filter(month %in% c("Nov", "Dez", "Jan", "Feb", "Mrz")) |> 
+  dplyr::arrange(date) |> 
+  ggplot2::ggplot() + 
+    ggplot2::geom_sf( aes(fill = as.factor(year)), color = NA) + 
+    ggplot2::theme_void()  +
+    ggplot2::scale_fill_viridis_d(option = "plasma")
+```
+
+#### Leaf-on coverage
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "plot leaf-on data"
+#| fig-cap: Available ortho photo coverage in Lower Saxony during leaf-on season (Apr - Oct)
+
+# latest leaf-on data per tile
+dat |>  
+  dplyr::filter(month %in% c("Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt")) |> 
+  dplyr::arrange(date) |> 
+  ggplot2::ggplot() + 
+    ggplot2::geom_sf( aes(fill = as.factor(year)), color = NA) + 
+    ggplot2::theme_void()  +
+    ggplot2::scale_fill_viridis_d(option = "plasma")
+```
+
+#### Acquisition month
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "plot month"
+#| fig-cap: Latest ortho photo coverage in Lower Saxony by month
+
+# month of latest data per tile
+dat |>  
+  dplyr::group_by(tile_id) |> 
+  dplyr::slice_max(date, n = 1) |> 
+  ggplot2::ggplot() + 
+    ggplot2::geom_sf( aes(fill = month), color = NA) + 
+    ggplot2::theme_void()  +
+    ggplot2::scale_fill_viridis_d(option = "plasma")
+```
