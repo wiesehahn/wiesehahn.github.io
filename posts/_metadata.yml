@@ -44,7 +44,7 @@ toc-title: Contents
 # code-tools: true
 
 execute:
-  eval: false
+  eval: true
   echo: true
   #message: true
   #warning: true

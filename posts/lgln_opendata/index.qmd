@@ -1,13 +1,13 @@
 ---
-title: Ortho photo coverage in Lower Saxony
+title: Orthophoto coverage in Lower Saxony
 
 #subtitle: 
 
 description: |
-  Plot coverage of LGLN ortho photos by date
+  Get information about the coverage of LGLN orthophotos by date
 
 abstract: | 
-  Ortho imagery in Lower Saxony is acquired by LGLN and distributed via STAC as COGs, here we access and plot basic metadata via R. 
+  Orthoimagery in Lower Saxony is acquired by LGLN and distributed via STAC as COGs, here we access and plot basic metadata via R. 
 
 categories:
   - COG
@@ -52,10 +52,10 @@ draft: false
 
 ## About LGLN opendata
 
-The State Office for Geoinformation and Land Surveying Lower Saxony (LGLN) provides a lot of its geodata as open data. And since some years they provide ortho images as well as terrain models of Lower Saxony as Cloud Optimized GeoTIFFs (COG) and reference them via Spatio Temporal Asset Catalogs (STAC). 
-Here we access the data via R to explore, vizualize and work with it programatically.
+The State Office for Geoinformation and Land Surveying Lower Saxony (LGLN) provides a lot of its geodata as open data. And since some years they provide orthoimages as well as terrain models of Lower Saxony as Cloud Optimized GeoTIFFs (COG) and reference them via Spatio Temporal Asset Catalogs (STAC). 
+Here we access the data via R to explore it's coverage by acquisition date.
 
-More information under [opengeodata.lgln.niedersachsen.de](https://opengeodata.lgln.niedersachsen.de/#dop).
+More information about the data under [opengeodata.lgln.niedersachsen.de](https://opengeodata.lgln.niedersachsen.de/#dop).
 
 
 ## Working with Orthoimagery
@@ -66,15 +66,27 @@ The index of available data is available as a geojson file which is stored in a 
 
 ```{r}
 #| echo: true
+#| warning: false
+#| message: false
+#| error: false
+#| code-fold: true
+#| code-summary: "load libraries"
+library(dplyr)
+library(sf)
+library(ggplot2)
+```
+
+```{r}
+#| echo: true
 #| code-fold: true
 #| code-summary: "get data"
 
 # read geojson from cloud bucket
-dat <- sf::st_read("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
+dat <- st_read("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
 
 # modify date
 dat <- dat |> 
-  dplyr::mutate(
+  mutate(
     date = lubridate::ymd(Aktualitaet),
     year = lubridate::year(date),
     month = lubridate::month(date, label = TRUE),
@@ -94,9 +106,11 @@ The data catalog contains information about the acquisition date of images. We c
 #| code-summary: "get min/max date"
 
 # first and last available acquisition dates
-dat |> arrange(date) |>  slice(1) |> pull(date)
+min <- dat |> arrange(date) |>  slice(1) |> pull(date)
 
-dat |> arrange(desc(date)) |>  slice(1) |> pull(date)
+max <- dat |> arrange(desc(date)) |>  slice(1) |> pull(date)
+
+print(paste(min, " - ", max))
 ```
 
 
@@ -106,16 +120,16 @@ dat |> arrange(desc(date)) |>  slice(1) |> pull(date)
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot latest data"
-#| fig-cap: Most recent available ortho photo coverage in Lower Saxony
+#| fig-cap: Most recent available orthophoto coverage in Lower Saxony
 
 # latest acquisition date per tile
 dat |> 
-  dplyr::group_by(tile_id) |> 
-  dplyr::slice_max(date, n = 1) |> 
-  ggplot2::ggplot() + 
-    ggplot2::geom_sf(aes(fill = as.factor(year)), color = NA) + 
-    ggplot2::theme_void()  +
-    ggplot2::scale_fill_viridis_d(option = "plasma")
+  group_by(tile_id) |> 
+  slice_max(date, n = 1) |> 
+  ggplot() + 
+    geom_sf(aes(fill = as.factor(year)), color = NA) + 
+    theme_void()  +
+    scale_fill_viridis_d(option = "plasma")
 ```
 
 #### First coverage
@@ -124,16 +138,16 @@ dat |>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot first data"
-#| fig-cap: First available ortho photo coverage in Lower Saxony
+#| fig-cap: First available orthophoto coverage in Lower Saxony
 
 # first acquisition date per tile
 dat |> 
-  dplyr::group_by(tile_id) |> 
-  dplyr::slice_min(date, n = 1) |> 
-  ggplot2::ggplot() + 
-    ggplot2::geom_sf(aes(fill = as.factor(year)), color = NA) + 
-    ggplot2::theme_void()  +
-    ggplot2::scale_fill_viridis_d(option = "plasma")
+  group_by(tile_id) |> 
+  slice_min(date, n = 1) |> 
+  ggplot() + 
+    geom_sf(aes(fill = as.factor(year)), color = NA) + 
+    theme_void()  +
+    scale_fill_viridis_d(option = "plasma")
 ```
 
 
@@ -143,16 +157,16 @@ dat |>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot leaf-off data"
-#| fig-cap: Available ortho photo coverage in Lower Saxony during leaf-off season (Nov - Mar)
+#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-off season (Nov - Mar)
 
 # latest leaf-off data per tile
 dat |>  
-  dplyr::filter(month %in% c("Nov", "Dez", "Jan", "Feb", "Mrz")) |> 
-  dplyr::arrange(date) |> 
-  ggplot2::ggplot() + 
-    ggplot2::geom_sf( aes(fill = as.factor(year)), color = NA) + 
-    ggplot2::theme_void()  +
-    ggplot2::scale_fill_viridis_d(option = "plasma")
+  filter(month %in% c("Nov", "Dez", "Jan", "Feb", "Mrz")) |> 
+  arrange(date) |> 
+  ggplot() + 
+    geom_sf( aes(fill = as.factor(year)), color = NA) + 
+    theme_void()  +
+    scale_fill_viridis_d(option = "plasma")
 ```
 
 #### Leaf-on coverage
@@ -161,16 +175,16 @@ dat |>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot leaf-on data"
-#| fig-cap: Available ortho photo coverage in Lower Saxony during leaf-on season (Apr - Oct)
+#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-on season (Apr - Oct)
 
 # latest leaf-on data per tile
 dat |>  
-  dplyr::filter(month %in% c("Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt")) |> 
-  dplyr::arrange(date) |> 
-  ggplot2::ggplot() + 
-    ggplot2::geom_sf( aes(fill = as.factor(year)), color = NA) + 
-    ggplot2::theme_void()  +
-    ggplot2::scale_fill_viridis_d(option = "plasma")
+  filter(month %in% c("Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt")) |> 
+  arrange(date) |> 
+  ggplot() + 
+    geom_sf( aes(fill = as.factor(year)), color = NA) + 
+    theme_void()  +
+    scale_fill_viridis_d(option = "plasma")
 ```
 
 #### Acquisition month
@@ -179,14 +193,35 @@ dat |>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot month"
-#| fig-cap: Latest ortho photo coverage in Lower Saxony by month
+#| fig-cap: Latest orthophoto coverage in Lower Saxony by month
 
 # month of latest data per tile
 dat |>  
-  dplyr::group_by(tile_id) |> 
-  dplyr::slice_max(date, n = 1) |> 
-  ggplot2::ggplot() + 
-    ggplot2::geom_sf( aes(fill = month), color = NA) + 
-    ggplot2::theme_void()  +
-    ggplot2::scale_fill_viridis_d(option = "plasma")
+  group_by(tile_id) |> 
+  slice_max(date, n = 1) |> 
+  ggplot() + 
+    geom_sf( aes(fill = month), color = NA) + 
+    theme_void()  +
+    scale_fill_viridis_d(option = "plasma")
+```
+
+#### Number of Images
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "plot number of images"
+#| fig-cap: Number of orthoimages per tile 
+
+# month of latest data per tile
+dat |>  
+  st_drop_geometry() |>  # Work with data first
+  group_by(tile_id) |> 
+  summarise(n = n()) |> 
+  left_join(dat |> select(tile_id) |> distinct(), by = "tile_id") |>
+  st_as_sf() |>
+  ggplot() + 
+    geom_sf( aes(fill = as.factor(n)), color = NA) + 
+    theme_void()  +
+    scale_fill_viridis_d(option = "plasma")
 ```

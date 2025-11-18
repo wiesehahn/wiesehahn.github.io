@@ -36,6 +36,7 @@ jobs:
             any::dplyr
             any::sf
             any::ggplot2
+            any::lubridate
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Render Website
