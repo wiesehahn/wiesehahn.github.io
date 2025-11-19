@@ -99,7 +99,7 @@ dat <- dat |>
 
 The data catalog contains information about the acquisition date of images. We can plot this data to get more information about the available images.
 
-# earliest / latest
+#### Timespan
 ```{r}
 #| echo: true
 #| code-fold: true
