@@ -82,16 +82,21 @@ library(ggplot2)
 #| code-summary: "get data"
 
 # read geojson from cloud bucket
-dat <- st_read("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
-
-# modify date
-dat <- dat |> 
+get_data <- function(geojson){
+  dat <- st_read(geojson) |> 
+  # modify date
   mutate(
     date = lubridate::ymd(Aktualitaet),
     year = lubridate::year(date),
     month = lubridate::month(date, label = TRUE),
     doy = lubridate::yday(date)
   )
+  return(dat)
+}
+
+
+dop20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
+bdom20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/bdom20/lgln-opengeodata-bdom20.geojson")
 ```
 
 
@@ -106,13 +111,30 @@ The data catalog contains information about the acquisition date of images. We c
 #| code-summary: "get min/max date"
 
 # first and last available acquisition dates
-min <- dat |> arrange(date) |>  slice(1) |> pull(date)
+get_timespan <- function(dat){
+  min <- dat|> arrange(date) |>  slice(1) |> pull(date)
+  max <- dat|> arrange(desc(date)) |>  slice(1) |> pull(date)
+  
+  print(paste(min, " - ", max))
+}
 
-max <- dat |> arrange(desc(date)) |>  slice(1) |> pull(date)
-
-print(paste(min, " - ", max))
 ```
 
+::: {.panel-tabset}
+##### DOP
+```{r}
+#| echo: false
+
+get_timespan(dop20)
+```
+
+##### bDOM
+```{r}
+#| echo: false
+
+get_timespan(bdom20)
+```
+:::
 
 #### Most recent coverage
 
@@ -123,7 +145,7 @@ print(paste(min, " - ", max))
 #| fig-cap: Most recent available orthophoto coverage in Lower Saxony
 
 # latest acquisition date per tile
-dat |> 
+dop20|> 
   group_by(tile_id) |> 
   slice_max(date, n = 1) |> 
   ggplot() + 
@@ -141,7 +163,7 @@ dat |>
 #| fig-cap: First available orthophoto coverage in Lower Saxony
 
 # first acquisition date per tile
-dat |> 
+dop20|> 
   group_by(tile_id) |> 
   slice_min(date, n = 1) |> 
   ggplot() + 
@@ -160,7 +182,7 @@ dat |>
 #| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-off season (Nov - Mar)
 
 # latest leaf-off data per tile
-dat |>  
+dop20|>  
   mutate(Year = if_else(month %in% c("Nov", "Dez", "Jan", "Feb", "Mrz"), 
                                   as.character(year), 
                                   NA_character_)) |> 
@@ -180,7 +202,7 @@ dat |>
 #| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-on season (Apr - Oct)
 
 # latest leaf-on data per tile
-dat |>
+dop20|>
   mutate(Year = if_else(month %in% c("Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt"), 
                                   as.character(year), 
                                   NA_character_)) |> 
@@ -200,7 +222,7 @@ dat |>
 #| fig-cap: Latest orthophoto coverage in Lower Saxony by month
 
 # month of latest data per tile
-dat |>  
+dop20|>  
   group_by(tile_id) |> 
   slice_max(date, n = 1) |> 
   ggplot() + 
@@ -218,11 +240,11 @@ dat |>
 #| fig-cap: Number of orthoimages per tile 
 
 # month of latest data per tile
-dat |>  
+dop20|>  
   st_drop_geometry() |>  # Work with data first
   group_by(tile_id) |> 
   summarise(n = n()) |> 
-  left_join(dat |> select(tile_id) |> distinct(), by = "tile_id") |>
+  left_join(dop20|> select(tile_id) |> distinct(), by = "tile_id") |>
   st_as_sf() |>
   ggplot() + 
     geom_sf( aes(fill = as.factor(n)), color = NA) + 
