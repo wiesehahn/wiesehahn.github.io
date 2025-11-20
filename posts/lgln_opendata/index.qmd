@@ -4,10 +4,10 @@ title: Orthophoto coverage in Lower Saxony
 #subtitle: 
 
 description: |
-  Get information about the coverage of LGLN orthophotos by date
+  Get information about the coverage of LGLN products (othophotos / image based height models)
 
 abstract: | 
-  Orthoimagery in Lower Saxony is acquired by LGLN and distributed via STAC as COGs, here we access and plot basic metadata via R. 
+  Orthoimagery in Lower Saxony is acquired on a regular basis by LGLN, for many applications the acquisition date is important. We use R to query and plot this information for orthophotos and derived height models. 
 
 categories:
   - COG
@@ -52,7 +52,7 @@ draft: false
 
 ## About LGLN opendata
 
-The State Office for Geoinformation and Land Surveying Lower Saxony (LGLN) provides a lot of its geodata as open data. And since some years they provide orthoimages as well as terrain models of Lower Saxony as Cloud Optimized GeoTIFFs (COG) and reference them via Spatio Temporal Asset Catalogs (STAC). 
+The State Office for Geoinformation and Land Surveying Lower Saxony ([LGLN](https://www.lgln.niedersachsen.de/startseite/)) provides a lot of its geospatial data under open licences. And since some years they provide the data as Cloud Optimized GeoTIFFs (COG) and reference them via [SpatioTemporal Asset Catalogs (STAC)](https://stacspec.org/en). 
 Here we access the data via R to explore it's coverage by acquisition date.
 
 More information about the data under [opengeodata.lgln.niedersachsen.de](https://opengeodata.lgln.niedersachsen.de/#dop).
@@ -62,7 +62,14 @@ More information about the data under [opengeodata.lgln.niedersachsen.de](https:
 
 ### Initialize metadata catalog
 
-The index of available data is available as a geojson file which is stored in a cloud bucket. It consists of many polygons which cover Lower Saxony and represent image tiles (2x2 km). For each tile it contains some basic metadata and links to further metadata of the images and links to the image data itself.
+The index of available data is available as a geojson file which is stored in a cloud bucket. It consists of many polygons which cover Lower Saxony and represent image tiles (1 km² or 2 km²). For each tile it contains some basic metadata and links to further metadata of the images and links to the image data itself. 
+We fetch the index file for orthoimages ([DOP](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::digitales-orthophoto-dop/about)) and image based height models ([bDOM](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::bildbasiertes-digitales-oberfl%C3%A4chenmodell-bdom20/about)) and plot information about acquisition dates. 
+
+::: {.callout-note}
+The data is also indexed in as STAC which allows for advanced searching, filtering and processing.
+It can be e.g. explored via [Radiant Earth STAC-Browser](https://radiantearth.github.io/stac-browser/#/external/dop.stac.lgln.niedersachsen.de/collections/DOP).
+:::
+
 
 ```{r}
 #| echo: true
@@ -94,13 +101,12 @@ get_data <- function(geojson){
   return(dat)
 }
 
-
 dop20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
 bdom20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/bdom20/lgln-opengeodata-bdom20.geojson")
 ```
 
 
-### Plot metadata catalog
+### Plot coverage by acquisitioin dates
 
 The data catalog contains information about the acquisition date of images. We can plot this data to get more information about the available images.
 
@@ -137,22 +143,42 @@ get_timespan(bdom20)
 :::
 
 #### Most recent coverage
-
 ```{r}
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot latest data"
-#| fig-cap: Most recent available orthophoto coverage in Lower Saxony
 
 # latest acquisition date per tile
-dop20|> 
+plot_latest <- function(dat){
+  dat|> 
   group_by(tile_id) |> 
   slice_max(date, n = 1) |> 
   ggplot() + 
     geom_sf(aes(fill = as.factor(year)), color = NA) + 
     theme_void()  +
     scale_fill_viridis_d(option = "plasma", name = "Year")
+}
 ```
+
+::: {.panel-tabset}
+##### DOP
+```{r}
+#| echo: false
+#| fig-cap: Most recent available orthophoto coverage in Lower Saxony
+
+plot_latest(dop20)
+```
+
+##### bDOM
+```{r}
+#| echo: false
+#| fig-cap: Most recent available image based height model coverage in Lower Saxony
+
+plot_latest(bdom20)
+```
+:::
+
+
 
 #### First coverage
 
@@ -160,18 +186,37 @@ dop20|>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot first data"
-#| fig-cap: First available orthophoto coverage in Lower Saxony
+
 
 # first acquisition date per tile
-dop20|> 
+plot_first <- function(dat){
+  dat|> 
   group_by(tile_id) |> 
   slice_min(date, n = 1) |> 
   ggplot() + 
     geom_sf(aes(fill = as.factor(year)), color = NA) + 
     theme_void()  +
     scale_fill_viridis_d(option = "plasma", name = "Year")
+}
 ```
 
+::: {.panel-tabset}
+##### DOP
+```{r}
+#| echo: false
+#| fig-cap: First available orthophoto coverage in Lower Saxony
+
+plot_first(dop20)
+```
+
+##### bDOM
+```{r}
+#| echo: false
+#| fig-cap: First available coverage of image based height model in Lower Saxony
+
+plot_first(bdom20)
+```
+:::
 
 #### Leaf-off coverage
 
@@ -179,10 +224,10 @@ dop20|>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot leaf-off data"
-#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-off season (Nov - Mar)
 
 # latest leaf-off data per tile
-dop20|>  
+plot_leafoff <- function(dat){
+  dat|>  
   mutate(Year = if_else(month %in% c("Nov", "Dez", "Jan", "Feb", "Mrz"), 
                                   as.character(year), 
                                   NA_character_)) |> 
@@ -191,7 +236,27 @@ dop20|>
     geom_sf(aes(fill = Year), color = NA) + 
     theme_void() +
     scale_fill_viridis_d(option = "plasma", na.value = "#f2f2f2", name = "Year")
+}
+
 ```
+
+::: {.panel-tabset}
+##### DOP
+```{r}
+#| echo: false
+#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-off season (Nov - Mar)
+
+plot_leafoff(dop20)
+```
+
+##### bDOM
+```{r}
+#| echo: false
+#| fig-cap: Available coverage of image based height model in Lower Saxony during leaf-off season (Nov - Mar)
+
+plot_leafoff(bdom20)
+```
+:::
 
 #### Leaf-on coverage
 
@@ -199,10 +264,10 @@ dop20|>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot leaf-on data"
-#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-on season (Apr - Oct)
 
 # latest leaf-on data per tile
-dop20|>
+plot_leafon <- function(dat){
+  dat|>
   mutate(Year = if_else(month %in% c("Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt"), 
                                   as.character(year), 
                                   NA_character_)) |> 
@@ -211,7 +276,27 @@ dop20|>
     geom_sf(aes(fill = Year), color = NA) + 
     theme_void() +
     scale_fill_viridis_d(option = "plasma", na.value = "#f2f2f2", name = "Year")
+}
+
 ```
+
+::: {.panel-tabset}
+##### DOP
+```{r}
+#| echo: false
+#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-on season (Apr - Oct)
+
+plot_leafon(dop20)
+```
+
+##### bDOM
+```{r}
+#| echo: false
+#| fig-cap: Available coverage of image based height model in Lower Saxony during leaf-on season (Apr - Oct)
+
+plot_leafon(bdom20)
+```
+:::
 
 #### Acquisition month
 
@@ -219,17 +304,36 @@ dop20|>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot month"
-#| fig-cap: Latest orthophoto coverage in Lower Saxony by month
 
 # month of latest data per tile
-dop20|>  
+plot_month <- function(dat){
+  dat|>  
   group_by(tile_id) |> 
   slice_max(date, n = 1) |> 
   ggplot() + 
     geom_sf( aes(fill = month), color = NA) + 
     theme_void()  +
     scale_fill_viridis_d(option = "plasma", name = "Month")
+}
 ```
+
+::: {.panel-tabset}
+##### DOP
+```{r}
+#| echo: false
+#| fig-cap: Latest orthophoto coverage in Lower Saxony
+
+plot_month(dop20)
+```
+
+##### bDOM
+```{r}
+#| echo: false
+#| fig-cap: Latest coverage of image based height model in Lower Saxony
+
+plot_month(bdom20)
+```
+:::
 
 #### Number of Images
 
@@ -237,17 +341,36 @@ dop20|>
 #| echo: true
 #| code-fold: true
 #| code-summary: "plot number of images"
-#| fig-cap: Number of orthoimages per tile 
 
 # month of latest data per tile
-dop20|>  
+plot_number <- function(dat){
+  dat|>  
   st_drop_geometry() |>  # Work with data first
   group_by(tile_id) |> 
   summarise(n = n()) |> 
-  left_join(dop20|> select(tile_id) |> distinct(), by = "tile_id") |>
+  left_join(dat|> select(tile_id) |> distinct(), by = "tile_id") |>
   st_as_sf() |>
   ggplot() + 
     geom_sf( aes(fill = as.factor(n)), color = NA) + 
     theme_void()  +
     scale_fill_viridis_d(option = "plasma", name = "# Campaigns")
+}
 ```
+
+::: {.panel-tabset}
+##### DOP
+```{r}
+#| echo: false
+#| fig-cap: Number of orthoimages per tile 
+
+plot_number(dop20)
+```
+
+##### bDOM
+```{r}
+#| echo: false
+#| fig-cap: Number of image based height models per tile 
+
+plot_number(bdom20)
+```
+:::
