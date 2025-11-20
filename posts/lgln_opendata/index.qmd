@@ -231,7 +231,7 @@ plot_leafoff <- function(dat){
   mutate(Year = if_else(!between(doy, 115, 315), 
                         as.character(year), 
                         NA_character_)) |> 
-  arrange(date) |> 
+  arrange(!is.na(Year), date) |> 
   ggplot() + 
     geom_sf(aes(fill = Year), color = NA) + 
     theme_void() +
@@ -271,7 +271,7 @@ plot_leafon <- function(dat){
   mutate(Year = if_else(between(doy, 115, 315), 
                         as.character(year), 
                         NA_character_)) |> 
-  arrange(date) |> 
+  arrange(!is.na(Year), date) |> 
   ggplot() + 
     geom_sf(aes(fill = Year), color = NA) + 
     theme_void() +
