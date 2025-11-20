@@ -129,7 +129,7 @@ dat |>
   ggplot() + 
     geom_sf(aes(fill = as.factor(year)), color = NA) + 
     theme_void()  +
-    scale_fill_viridis_d(option = "plasma")
+    scale_fill_viridis_d(option = "plasma", name = "Year")
 ```
 
 #### First coverage
@@ -147,7 +147,7 @@ dat |>
   ggplot() + 
     geom_sf(aes(fill = as.factor(year)), color = NA) + 
     theme_void()  +
-    scale_fill_viridis_d(option = "plasma")
+    scale_fill_viridis_d(option = "plasma", name = "Year")
 ```
 
 
@@ -161,12 +161,14 @@ dat |>
 
 # latest leaf-off data per tile
 dat |>  
-  filter(month %in% c("Nov", "Dez", "Jan", "Feb", "Mrz")) |> 
+  mutate(Year = if_else(month %in% c("Nov", "Dez", "Jan", "Feb", "Mrz"), 
+                                  as.character(year), 
+                                  NA_character_)) |> 
   arrange(date) |> 
   ggplot() + 
-    geom_sf( aes(fill = as.factor(year)), color = NA) + 
-    theme_void()  +
-    scale_fill_viridis_d(option = "plasma")
+    geom_sf(aes(fill = Year), color = NA) + 
+    theme_void() +
+    scale_fill_viridis_d(option = "plasma", na.value = "#f2f2f2", name = "Year")
 ```
 
 #### Leaf-on coverage
@@ -178,13 +180,15 @@ dat |>
 #| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-on season (Apr - Oct)
 
 # latest leaf-on data per tile
-dat |>  
-  filter(month %in% c("Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt")) |> 
+dat |>
+  mutate(Year = if_else(month %in% c("Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt"), 
+                                  as.character(year), 
+                                  NA_character_)) |> 
   arrange(date) |> 
   ggplot() + 
-    geom_sf( aes(fill = as.factor(year)), color = NA) + 
-    theme_void()  +
-    scale_fill_viridis_d(option = "plasma")
+    geom_sf(aes(fill = Year), color = NA) + 
+    theme_void() +
+    scale_fill_viridis_d(option = "plasma", na.value = "#f2f2f2", name = "Year")
 ```
 
 #### Acquisition month
@@ -202,7 +206,7 @@ dat |>
   ggplot() + 
     geom_sf( aes(fill = month), color = NA) + 
     theme_void()  +
-    scale_fill_viridis_d(option = "plasma")
+    scale_fill_viridis_d(option = "plasma", name = "Month")
 ```
 
 #### Number of Images
@@ -223,5 +227,5 @@ dat |>
   ggplot() + 
     geom_sf( aes(fill = as.factor(n)), color = NA) + 
     theme_void()  +
-    scale_fill_viridis_d(option = "plasma")
+    scale_fill_viridis_d(option = "plasma", name = "# Campaigns")
 ```
