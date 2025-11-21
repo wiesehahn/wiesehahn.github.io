@@ -121,16 +121,17 @@ get_timespan <- function(dat){
   min <- dat|> arrange(date) |>  slice(1) |> pull(date)
   max <- dat|> arrange(desc(date)) |>  slice(1) |> pull(date)
   
-  cat("Images available from", min, "to", max, "\n")
+  cat("Images available from", format(min), "to", format(max), "\n")
 }
 
 plot_distribution <- function(dat){
   dat |> 
-  ggplot(aes(x = doy, fill = year)) +
+  ggplot(aes(x = doy)) +
   geom_bar() +
   scale_x_continuous(
     breaks = c(1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335),
-    labels = month.abb
+    labels = month.abb,
+    limits = c(1, 365)
   ) +
   labs(x = NULL, y = NULL) +
   theme_void() +
@@ -146,6 +147,7 @@ plot_distribution <- function(dat){
 ##### DOP
 ```{r}
 #| echo: false
+#| warning: false
 #| fig-cap: Distribution of orthophoto acquisitions in Lower Saxony by Day of Year
 
 get_timespan(dop20)
