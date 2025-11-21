@@ -268,7 +268,7 @@ plot_leafoff <- function(dat){
 ##### DOP
 ```{r}
 #| echo: false
-#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-off season (mid November - mid March)
+#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-off season (mid November - mid April)
 
 plot_leafoff(dop20)
 ```
@@ -276,7 +276,7 @@ plot_leafoff(dop20)
 ##### bDOM
 ```{r}
 #| echo: false
-#| fig-cap: Available coverage of image based height model in Lower Saxony during leaf-off season (mid November - mid March)
+#| fig-cap: Available coverage of image based height model in Lower Saxony during leaf-off season (mid November - mid April)
 
 plot_leafoff(bdom20)
 ```
@@ -308,7 +308,7 @@ plot_leafon <- function(dat){
 ##### DOP
 ```{r}
 #| echo: false
-#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-on season (mid March - mid November)
+#| fig-cap: Available orthophoto coverage in Lower Saxony during leaf-on season (mid April - mid November)
 
 plot_leafon(dop20)
 ```
@@ -316,7 +316,7 @@ plot_leafon(dop20)
 ##### bDOM
 ```{r}
 #| echo: false
-#| fig-cap: Available coverage of image based height model in Lower Saxony during leaf-on season (mid March - mid November)
+#| fig-cap: Available coverage of image based height model in Lower Saxony during leaf-on season (mid April - mid November)
 
 plot_leafon(bdom20)
 ```
