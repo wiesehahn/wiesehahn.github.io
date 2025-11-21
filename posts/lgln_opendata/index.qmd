@@ -108,20 +108,36 @@ bdom20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomai
 
 ### Plot coverage by acquisitioin dates
 
-The data catalog contains information about the acquisition date of images. We can plot this data to get more information about the available images.
+The data catalog contains information about the acquisition date of images. We can plot this data to get more information about the available images. Acquisition dates for bDOM should be in principle the same as for DOP as the underlying image data is the same, however not all images were processed to bDOM as the necessary data quality (overlap) has not always been fulfilled.
 
-#### Timespan
+#### Overview about acquisition dates
 ```{r}
 #| echo: true
 #| code-fold: true
-#| code-summary: "get min/max date"
+#| code-summary: "get overview"
 
 # first and last available acquisition dates
 get_timespan <- function(dat){
   min <- dat|> arrange(date) |>  slice(1) |> pull(date)
   max <- dat|> arrange(desc(date)) |>  slice(1) |> pull(date)
   
-  print(paste(min, " - ", max))
+  cat("Images available from", min, "to", max, "\n")
+}
+
+plot_distribution <- function(dat){
+  dat |> 
+  ggplot(aes(x = doy, fill = year)) +
+  geom_bar() +
+  scale_x_continuous(
+    breaks = c(1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335),
+    labels = month.abb
+  ) +
+  labs(x = NULL, y = NULL) +
+  theme_void() +
+  theme(
+    axis.text.x = element_text(),
+    legend.position = "top"
+  )
 }
 
 ```
@@ -130,15 +146,21 @@ get_timespan <- function(dat){
 ##### DOP
 ```{r}
 #| echo: false
+#| fig-cap: Distribution of orthophoto acquisitions in Lower Saxony by Day of Year
 
 get_timespan(dop20)
+
+plot_distribution(dop20)
 ```
 
 ##### bDOM
 ```{r}
 #| echo: false
+#| fig-cap: Distribution of orthophoto acquisitions for height models in Lower Saxony by Day of Year
 
 get_timespan(bdom20)
+
+plot_distribution(bdom20)
 ```
 :::
 
@@ -324,6 +346,8 @@ plot_month <- function(dat){
 #| fig-cap: Latest orthophoto coverage in Lower Saxony
 
 plot_month(dop20)
+
+summary(dop20$month)
 ```
 
 ##### bDOM
@@ -332,6 +356,8 @@ plot_month(dop20)
 #| fig-cap: Latest coverage of image based height model in Lower Saxony
 
 plot_month(bdom20)
+
+summary(bdom20$month)
 ```
 :::
 
