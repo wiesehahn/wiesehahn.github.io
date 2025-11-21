@@ -1,13 +1,13 @@
 ---
-title: Orthophoto coverage in Lower Saxony
+title: Temporal Patterns in LGLN Opendata
 
 #subtitle: 
 
 description: |
-  Get information about the coverage of LGLN products (othophotos / image based height models)
+  Get information about the coverage and timing of LGLN products (othophotos / image-based height models / ALS-based height models)
 
 abstract: | 
-  Orthoimagery in Lower Saxony is acquired on a regular basis by LGLN, for many applications the acquisition date is important. We use R to query and plot this information for orthophotos and derived height models. 
+  Orthoimagery and airborne laser scanning data in Lower Saxony is acquired on a regular basis by LGLN, for many applications the acquisition date is important. We use R to query and plot this information for orthophotos, image-based height models and ALS-based height models. 
 
 categories:
   - COG
@@ -15,6 +15,8 @@ categories:
   - Open Source
   - Raster Data
   - R
+  - Lidar
+  - Laserscanning
 
 date: 2023-03-01
 date-modified: last-modified
@@ -52,18 +54,20 @@ draft: false
 
 ## About LGLN opendata
 
-The State Office for Geoinformation and Land Surveying Lower Saxony ([LGLN](https://www.lgln.niedersachsen.de/startseite/)) provides a lot of its geospatial data under open licences. And since some years they provide the data as Cloud Optimized GeoTIFFs (COG) and reference them via [SpatioTemporal Asset Catalogs (STAC)](https://stacspec.org/en). 
-Here we access the data via R to explore it's coverage by acquisition date.
+The State Office for Geoinformation and Land Surveying Lower Saxony ([LGLN](https://www.lgln.niedersachsen.de/startseite/)) provides a lot of its geospatial datasets under open licences. These include orthoimages (DOP), image-based surface height models (bDOM), as well as terrain (DGM) and surface (DOM) models derived from airborne laser scanning (ALS). In recent years the data has been made available as Cloud Optimized GeoTIFFs (COG) and referenced through [SpatioTemporal Asset Catalogs (STAC)](https://stacspec.org/en). 
 
-More information about the data under [opengeodata.lgln.niedersachsen.de](https://opengeodata.lgln.niedersachsen.de/#dop).
+We use R to access and explore the acquisition dates of these datasets. The index of available data - stored as a GeoJSON file in a cloud bucket - contains numerous polygons representing image tiles (1 km² or 2 km²) covering Lower Saxony. Each tile contains some basic metadata and links to further metadata as well as links to the image data itself. 
+We fetch the index files for orthoimages ([DOP](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::digitales-orthophoto-dop/about)), image-based height models ([bDOM](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::bildbasiertes-digitales-oberfl%C3%A4chenmodell-bdom20/about)) and ALS-based height models ([DGM](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::digitales-gel%C3%A4ndemodell-dgm1/about)/[DOM](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::digitales-oberfl%C3%A4chenmodell-dom1/about)) to examine acquisition timing.
 
+More information about the data is available at [opengeodata.lgln.niedersachsen.de](https://opengeodata.lgln.niedersachsen.de/#dop).
 
-## Working with Orthoimagery
+## Data Acquisition Timing
 
-### Initialize metadata catalog
+Due to phenological effects there are different demands to the data in vegetated areas. 
+For orthophotos, data collection during the leaf-on season is preferred to get information from tree canopy such as vitality and to get better results during image-matching for height model processing.
+In contrast, terrain models derived from ALS data benefit from leaf-off conditions, when more laser pulses can penetrate the canopy and reach the ground surface.
 
-The index of available data is available as a geojson file which is stored in a cloud bucket. It consists of many polygons which cover Lower Saxony and represent image tiles (1 km² or 2 km²). For each tile it contains some basic metadata and links to further metadata of the images and links to the image data itself. 
-We fetch the index file for orthoimages ([DOP](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::digitales-orthophoto-dop/about)) and image based height models ([bDOM](https://ni-lgln-opengeodata.hub.arcgis.com/apps/lgln-opengeodata::bildbasiertes-digitales-oberfl%C3%A4chenmodell-bdom20/about)) and plot information about acquisition dates. 
+DOP and bDOM originate from the same underlying imagery, but the available tiles and acquisition dates may differ because bDOM is generated only for a subset of images. Similarly, DGM and DOM are both derived from ALS data, but since they share the same acquisition basis, we only plot information for DGM, which can be considered representative of DOM as well.
 
 ::: {.callout-note}
 The data is also indexed in as STAC which allows for advanced searching, filtering and processing.
@@ -103,6 +107,7 @@ get_data <- function(geojson){
 
 dop20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
 bdom20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/bdom20/lgln-opengeodata-bdom20.geojson")
+dgm1<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dgm1/lgln-opengeodata-dgm1.geojson")
 ```
 
 
@@ -166,6 +171,17 @@ plot_distribution(bdom20)
 ```
 :::
 
+##### DGM
+```{r}
+#| echo: false
+#| fig-cap: Distribution of DGM/DOM data in Lower Saxony by Day of Year
+
+get_timespan(dgm1)
+
+plot_distribution(dgm1)
+```
+:::
+
 #### Most recent coverage
 ```{r}
 #| echo: true
@@ -202,6 +218,14 @@ plot_latest(bdom20)
 ```
 :::
 
+##### DGM
+```{r}
+#| echo: false
+#| fig-cap: Most recent available DGM/DOM data coverage in Lower Saxony
+
+plot_latest(dgm1)
+```
+:::
 
 
 #### First coverage
@@ -241,6 +265,16 @@ plot_first(dop20)
 plot_first(bdom20)
 ```
 :::
+
+##### DGM
+```{r}
+#| echo: false
+#| fig-cap: First available DGM/DOM data in Lower Saxony
+
+plot_first(dgm1)
+```
+:::
+
 
 #### Leaf-off coverage
 
@@ -282,6 +316,15 @@ plot_leafoff(bdom20)
 ```
 :::
 
+##### DGM
+```{r}
+#| echo: false
+#| fig-cap: Available coverage of DGM/DOM data in Lower Saxony during leaf-off season (mid November - mid April)
+
+plot_leafoff(dgm1)
+```
+:::
+
 #### Leaf-on coverage
 
 ```{r}
@@ -319,6 +362,15 @@ plot_leafon(dop20)
 #| fig-cap: Available coverage of image based height model in Lower Saxony during leaf-on season (mid April - mid November)
 
 plot_leafon(bdom20)
+```
+:::
+
+##### DGM
+```{r}
+#| echo: false
+#| fig-cap: Available coverage of DGM/DOM data in Lower Saxony during leaf-on season (mid April - mid November)
+
+plot_leafon(dgm1)
 ```
 :::
 
@@ -363,6 +415,18 @@ summary(bdom20$month)
 ```
 :::
 
+##### DGM
+```{r}
+#| echo: false
+#| fig-cap: Latest coverage DGM/DOM data in Lower Saxony
+
+plot_month(dgm1)
+
+summary(dgm1$month)
+```
+:::
+
+
 #### Number of Images
 
 ```{r}
@@ -400,5 +464,14 @@ plot_number(dop20)
 #| fig-cap: Number of image based height models per tile 
 
 plot_number(bdom20)
+```
+:::
+
+##### DGM
+```{r}
+#| echo: false
+#| fig-cap: Number of DGM/DOM acquisitions per tile 
+
+plot_number(dgm1)
 ```
 :::
