@@ -180,7 +180,6 @@ get_timespan(dgm1)
 
 plot_distribution(dgm1)
 ```
-:::
 
 ##### DOM
 ```{r}
@@ -235,7 +234,6 @@ plot_latest(bdom20)
 
 plot_latest(dgm1)
 ```
-:::
 
 ##### DOM
 ```{r}
@@ -291,7 +289,6 @@ plot_first(bdom20)
 
 plot_first(dgm1)
 ```
-:::
 
 ##### DOM
 ```{r}
@@ -349,7 +346,6 @@ plot_leafoff(bdom20)
 
 plot_leafoff(dgm1)
 ```
-:::
 
 ##### DOM
 ```{r}
@@ -407,7 +403,6 @@ plot_leafon(bdom20)
 
 plot_leafon(dgm1)
 ```
-:::
 
 ##### DOM
 ```{r}
@@ -468,7 +463,6 @@ plot_month(dgm1)
 
 summary(dgm1$month)
 ```
-:::
 
 ##### DOM
 ```{r}
@@ -528,7 +522,6 @@ plot_number(bdom20)
 
 plot_number(dgm1)
 ```
-:::
 
 ##### DOM
 ```{r}
