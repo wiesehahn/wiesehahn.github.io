@@ -67,7 +67,7 @@ Due to phenological effects there are different demands to the data in vegetated
 For orthophotos, data collection during the leaf-on season is preferred to get information from tree canopy such as vitality and to get better results during image-matching for height model processing.
 In contrast, terrain models derived from ALS data benefit from leaf-off conditions, when more laser pulses can penetrate the canopy and reach the ground surface.
 
-DOP and bDOM originate from the same underlying imagery, but the available tiles and acquisition dates may differ because bDOM is generated only for a subset of images. Similarly, DGM and DOM are both derived from ALS data, but since they share the same acquisition basis, we only plot information for DGM, which can be considered representative of DOM as well.
+DOP and bDOM originate from the same underlying imagery, but the available tiles and acquisition dates may differ because bDOM is generated only for a subset of images. Similarly, DGM and DOM are both derived from ALS data, but the available tiles and acquisition dates may differ.
 
 ::: {.callout-note}
 The data is also indexed in as STAC which allows for advanced searching, filtering and processing.
@@ -108,6 +108,7 @@ get_data <- function(geojson){
 dop20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dop20/lgln-opengeodata-dop20.geojson")
 bdom20<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/bdom20/lgln-opengeodata-bdom20.geojson")
 dgm1<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dgm1/lgln-opengeodata-dgm1.geojson")
+dom1<- get_data("https://arcgis-geojson.s3.eu-de.cloud-object-storage.appdomain.cloud/dom1/lgln-opengeodata-dom1.geojson")
 ```
 
 
@@ -173,11 +174,22 @@ plot_distribution(bdom20)
 ##### DGM
 ```{r}
 #| echo: false
-#| fig-cap: Distribution of DGM/DOM data in Lower Saxony by Day of Year
+#| fig-cap: Distribution of DGM data in Lower Saxony by Day of Year
 
 get_timespan(dgm1)
 
 plot_distribution(dgm1)
+```
+:::
+
+##### DOM
+```{r}
+#| echo: false
+#| fig-cap: Distribution of DOM data in Lower Saxony by Day of Year
+
+get_timespan(dom1)
+
+plot_distribution(dom1)
 ```
 :::
 
@@ -219,9 +231,18 @@ plot_latest(bdom20)
 ##### DGM
 ```{r}
 #| echo: false
-#| fig-cap: Most recent available DGM/DOM data coverage in Lower Saxony
+#| fig-cap: Most recent available DGM data coverage in Lower Saxony
 
 plot_latest(dgm1)
+```
+:::
+
+##### DOM
+```{r}
+#| echo: false
+#| fig-cap: Most recent available DOM data coverage in Lower Saxony
+
+plot_latest(dom1)
 ```
 :::
 
@@ -266,9 +287,18 @@ plot_first(bdom20)
 ##### DGM
 ```{r}
 #| echo: false
-#| fig-cap: First available DGM/DOM data in Lower Saxony
+#| fig-cap: First available DGM data in Lower Saxony
 
 plot_first(dgm1)
+```
+:::
+
+##### DOM
+```{r}
+#| echo: false
+#| fig-cap: First available DOM data in Lower Saxony
+
+plot_first(dom1)
 ```
 :::
 
@@ -315,11 +345,21 @@ plot_leafoff(bdom20)
 ##### DGM
 ```{r}
 #| echo: false
-#| fig-cap: Available coverage of DGM/DOM data in Lower Saxony during leaf-off season (mid November - mid April)
+#| fig-cap: Available coverage of DGM data in Lower Saxony during leaf-off season (mid November - mid April)
 
 plot_leafoff(dgm1)
 ```
 :::
+
+##### DOM
+```{r}
+#| echo: false
+#| fig-cap: Available coverage of DOM data in Lower Saxony during leaf-off season (mid November - mid April)
+
+plot_leafoff(dom1)
+```
+:::
+
 
 #### Leaf-on coverage
 
@@ -363,11 +403,21 @@ plot_leafon(bdom20)
 ##### DGM
 ```{r}
 #| echo: false
-#| fig-cap: Available coverage of DGM/DOM data in Lower Saxony during leaf-on season (mid April - mid November)
+#| fig-cap: Available coverage of DGM data in Lower Saxony during leaf-on season (mid April - mid November)
 
 plot_leafon(dgm1)
 ```
 :::
+
+##### DOM
+```{r}
+#| echo: false
+#| fig-cap: Available coverage of DOM data in Lower Saxony during leaf-on season (mid April - mid November)
+
+plot_leafon(dom1)
+```
+:::
+
 
 #### Acquisition month
 
@@ -412,11 +462,22 @@ summary(bdom20$month)
 ##### DGM
 ```{r}
 #| echo: false
-#| fig-cap: Latest coverage DGM/DOM data in Lower Saxony
+#| fig-cap: Latest coverage DGM data in Lower Saxony
 
 plot_month(dgm1)
 
 summary(dgm1$month)
+```
+:::
+
+##### DOM
+```{r}
+#| echo: false
+#| fig-cap: Latest coverage DOM data in Lower Saxony
+
+plot_month(dom1)
+
+summary(dom1$month)
 ```
 :::
 
@@ -463,8 +524,17 @@ plot_number(bdom20)
 ##### DGM
 ```{r}
 #| echo: false
-#| fig-cap: Number of DGM/DOM acquisitions per tile 
+#| fig-cap: Number of DGM acquisitions per tile 
 
 plot_number(dgm1)
+```
+:::
+
+##### DOM
+```{r}
+#| echo: false
+#| fig-cap: Number of DOM acquisitions per tile 
+
+plot_number(dom1)
 ```
 :::
