@@ -1,4 +1,6 @@
 
+- [[{{< iconify lucide presentation >}}]{.second-color} **Harmonisierung heterogener Geodaten mit Open-Source-Pipelines**](https://media.ccc.de/v/fossgis2026-84273-harmonisierung-heterogener-geodaten-mit-open-source-pipelines)  
+  *FOSSGIS conference, Göttingen, 25.03.2026*
 - [[{{< iconify lucide presentation >}}]{.second-color} **From Plots to Landscapes: Integrating Remote Sensing Data to Map Forest Biodiversity**](https://wiesehahn.github.io/presentation-fowita25/presentation.html)    
   *FOWITA conference, Freiburg, 30.09.2025*
 - [[{{< iconify lucide presentation >}}]{.second-color} **Airborne-Laserscanning in Deutschland: Verfügbarkeiten, Herausforderungen, Potenziale**](https://wiesehahn.github.io/presentation-fossgis25/presentation.html)    
